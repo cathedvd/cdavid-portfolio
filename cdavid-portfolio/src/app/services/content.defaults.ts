@@ -2,10 +2,10 @@ import { PortfolioSiteContent } from '../models/content.interfaces';
 
 export const DEFAULT_CONTENT: PortfolioSiteContent = {
   hero: {
-    brandName: 'Snap',
-    brandAccent: 'Folio',
-    fullName: 'Alexander Chen',
-    typedItems: ['UI/UX Designer', 'Web Developer', 'Brand Strategist', 'Creative Director'],
+    brandName: 'Portfolio',
+    brandAccent: '',
+    fullName: 'Cathereen David',
+    typedItems: ['Cybersecurity Student', 'CTF Competitor', 'Aspiring Security Analyst', 'Machine Learning Enthusiast'],
     description: 'Passionate about creating exceptional digital experiences that blend innovative design with functional development. Let\'s bring your vision to life.',
     profileImage: 'assets/img/profile/profile-2.webp',
     ctaPrimary: { text: 'View My Work', link: '#portfolio' },
@@ -97,17 +97,12 @@ export const DEFAULT_CONTENT: PortfolioSiteContent = {
   },
 
   services: {
-    sectionTitle: 'Services',
-    sectionDescription: 'Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit',
-    headingLines: ['Innovative business', 'performance solutions'],
-    summary: 'We integrate forward-thinking strategies, creative approaches, and state-of-the-art technologies to deliver exceptional customer experiences that drive growth and engage target markets.',
+    sectionTitle: 'References',
+    sectionDescription: 'People who can speak about my work, character, and professional growth.',
     items: [
-      { icon: 'bi bi-palette', titleMain: 'Creative', titleAccent: 'branding', description: 'Nulla facilisi. Maecenas eget magna neque. Suspendisse potenti. Curabitur eleifend nisi non magna vulputate, vel condimentum libero tempus. Proin consectetur feugiat diam.' },
-      { icon: 'bi bi-gem', titleMain: 'Design', titleAccent: 'systems', description: 'Praesent euismod varius tellus, vel bibendum nunc interdum at. Donec vehicula diam vel metus venenatis convallis. Aliquam erat volutpat. Etiam viverra magna sit amet.' },
-      { icon: 'bi bi-megaphone', titleMain: 'Marketing', titleAccent: 'strategies', description: 'Vivamus tempor velit id magna dictum, sed fermentum nisi faucibus. Integer nec pretium sapien. Fusce tincidunt ligula et purus consequat, ac pellentesque nulla eleifend.' },
-      { icon: 'bi bi-code-slash', titleMain: 'Digital', titleAccent: 'platforms', description: 'Cras fermentum odio eu feugiat malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et accumsan cursus. Morbi placerat nulla vel nunc viverra accumsan.' },
-      { icon: 'bi bi-graph-up', titleMain: 'Growth', titleAccent: 'acceleration', description: 'Aenean vel augue vel nisi bibendum posuere. Phasellus in lacus quis urna sodales dignissim. Duis aliquam libero eget risus facilisis. Quisque eget libero vel nisl fringilla.' },
-      { icon: 'bi bi-camera-video', titleMain: 'Media', titleAccent: 'solutions', description: 'Etiam efficitur lacus in diam finibus, nec ultrices est sagittis. Maecenas elementum magna sed risus faucibus, nec commodo purus facilisis. Vestibulum accumsan magna.' }
+      { image: 'assets/img/person/person-f-7.webp', name: 'Rachel Bennett', position: 'Strategy Director' },
+      { image: 'assets/img/person/person-m-7.webp', name: 'Daniel Morgan', position: 'Chief Innovation Officer' },
+      { image: 'assets/img/person/person-f-8.webp', name: 'Emma Thompson', position: 'Digital Lead' }
     ]
   },
 
@@ -141,7 +136,7 @@ export const DEFAULT_CONTENT: PortfolioSiteContent = {
       { label: 'Home', href: '#hero', icon: 'bi bi-house navicon' },
       { label: 'About', href: '#about', icon: 'bi bi-person navicon' },
       { label: 'Portfolio', href: '#portfolio', icon: 'bi bi-images navicon' },
-      { label: 'Services', href: '#services', icon: 'bi bi-hdd-stack navicon' },
+      { label: 'References', href: '#services', icon: 'bi bi-hdd-stack navicon' },
       { label: 'Contact', href: '#contact', icon: 'bi bi-envelope navicon' }
     ],
     socialLinks: [

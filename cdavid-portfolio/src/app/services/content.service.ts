@@ -1,12 +1,15 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { PortfolioSiteContent } from '../models/content.interfaces';
 import { DEFAULT_CONTENT } from './content.defaults';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ContentService {
-  private readonly STORAGE_KEY = 'portfolio_content';
+  private http = inject(HttpClient);
+  loaded = signal(false);
 
-  private content = signal<PortfolioSiteContent>(this.loadContent());
+  private content = signal<PortfolioSiteContent>(structuredClone(DEFAULT_CONTENT));
 
   hero = computed(() => this.content().hero);
   about = computed(() => this.content().about);
@@ -19,47 +22,72 @@ export class ContentService {
   header = computed(() => this.content().header);
   footer = computed(() => this.content().footer);
 
-  updateSection<K extends keyof PortfolioSiteContent>(section: K, data: PortfolioSiteContent[K]): void {
-    this.content.update(c => ({ ...c, [section]: data }));
-    this.persist();
+  constructor() {
+    void this.refreshFromServer(true);
+
+    if (typeof window !== 'undefined') {
+      window.setInterval(() => {
+        void this.refreshFromServer();
+      }, 1500);
+    }
   }
 
-  resetSection(section: keyof PortfolioSiteContent): void {
-    this.content.update(c => ({ ...c, [section]: DEFAULT_CONTENT[section] }));
-    this.persist();
+  async updateSection<K extends keyof PortfolioSiteContent>(section: K, data: PortfolioSiteContent[K]): Promise<boolean> {
+    const next = { ...this.content(), [section]: structuredClone(data) };
+    return this.persist(next);
   }
 
-  resetAll(): void {
-    this.content.set({ ...DEFAULT_CONTENT });
-    localStorage.removeItem(this.STORAGE_KEY);
+  async resetSection(section: keyof PortfolioSiteContent): Promise<boolean> {
+    const next = { ...this.content(), [section]: structuredClone(DEFAULT_CONTENT[section]) };
+    return this.persist(next);
+  }
+
+  async resetAll(): Promise<boolean> {
+    const next = structuredClone(DEFAULT_CONTENT);
+    return this.persist(next);
   }
 
   exportContent(): string {
     return JSON.stringify(this.content(), null, 2);
   }
 
-  importContent(json: string): boolean {
+  async importContent(json: string): Promise<boolean> {
     try {
       const data = JSON.parse(json) as PortfolioSiteContent;
-      this.content.set({ ...DEFAULT_CONTENT, ...data });
-      this.persist();
-      return true;
+      return this.persist(this.mergeWithDefaults(data));
     } catch {
       return false;
     }
   }
 
-  private loadContent(): PortfolioSiteContent {
+  private async refreshFromServer(markLoaded = false): Promise<void> {
     try {
-      const stored = localStorage.getItem(this.STORAGE_KEY);
-      if (stored) {
-        return { ...DEFAULT_CONTENT, ...JSON.parse(stored) };
+      const data = await firstValueFrom(this.http.get<PortfolioSiteContent>('/api/content'));
+      this.content.set(this.mergeWithDefaults(data));
+    } catch {
+      // Keep current client state when the API is unavailable.
+    } finally {
+      if (markLoaded) {
+        this.loaded.set(true);
       }
-    } catch { /* ignore parse errors */ }
-    return { ...DEFAULT_CONTENT };
+    }
   }
 
-  private persist(): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.content()));
+  private mergeWithDefaults(data: Partial<PortfolioSiteContent>): PortfolioSiteContent {
+    return {
+      ...structuredClone(DEFAULT_CONTENT),
+      ...data
+    };
+  }
+
+  private async persist(next: PortfolioSiteContent): Promise<boolean> {
+    try {
+      const saved = await firstValueFrom(this.http.post<PortfolioSiteContent>('/api/content', next));
+      this.content.set(this.mergeWithDefaults(saved));
+      return true;
+    } catch (err) {
+      console.error('Failed to save content:', err);
+      return false;
+    }
   }
 }

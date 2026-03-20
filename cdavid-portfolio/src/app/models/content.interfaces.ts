@@ -70,19 +70,16 @@ export interface PortfolioContent {
   items: PortfolioItem[];
 }
 
-export interface ServiceItem {
-  icon: string;
-  titleMain: string;
-  titleAccent: string;
-  description: string;
+export interface ReferenceItem {
+  image: string;
+  name: string;
+  position: string;
 }
 
 export interface ServicesContent {
   sectionTitle: string;
   sectionDescription: string;
-  headingLines: string[];
-  summary: string;
-  items: ServiceItem[];
+  items: ReferenceItem[];
 }
 
 export interface TestimonialItem {

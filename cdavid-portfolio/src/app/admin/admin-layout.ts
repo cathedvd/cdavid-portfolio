@@ -19,7 +19,7 @@ export class AdminLayout {
     { label: 'Stats', route: '/admin/stats', icon: 'bi bi-bar-chart' },
     { label: 'Skills', route: '/admin/skills', icon: 'bi bi-tools' },
     { label: 'Portfolio', route: '/admin/portfolio', icon: 'bi bi-images' },
-    { label: 'Services', route: '/admin/services', icon: 'bi bi-briefcase' },
+    { label: 'References', route: '/admin/services', icon: 'bi bi-briefcase' },
     { label: 'Testimonials', route: '/admin/testimonials', icon: 'bi bi-chat-quote' },
     { label: 'Contact', route: '/admin/contact', icon: 'bi bi-envelope' },
     { label: 'Header & Footer', route: '/admin/header-footer', icon: 'bi bi-layout-text-sidebar' },

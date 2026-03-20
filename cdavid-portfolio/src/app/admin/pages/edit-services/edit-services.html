@@ -1,6 +1,6 @@
 <div class="editor-page">
   <div class="editor-header">
-    <h1>Edit Services</h1>
+    <h1>Edit References</h1>
     <div class="header-actions">
       <button class="btn-reset" (click)="reset()">Reset</button>
       <button class="btn-save" (click)="save()">Save Changes</button>
@@ -19,45 +19,33 @@
         <input [(ngModel)]="data.sectionDescription" name="desc">
       </div>
     </div>
-    <div class="form-group">
-      <label>Heading Lines (one per line)</label>
-      <textarea [(ngModel)]="headingStr" name="heading" rows="2"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Summary</label>
-      <textarea [(ngModel)]="data.summary" name="summary" rows="3"></textarea>
-    </div>
   </div>
 
   <div class="form-section">
-    <h3>Service Cards</h3>
+    <h3>Reference Cards</h3>
     @for (item of data.items; track $index) {
       <div class="array-item">
         <div class="item-header">
-          <span class="item-title">{{ item.titleMain }} {{ item.titleAccent }}</span>
+          <span class="item-title">{{ item.name || 'New Reference' }}</span>
           <button class="remove-btn" (click)="removeItem($index)">Remove</button>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Icon Class</label>
-            <input [(ngModel)]="item.icon" [name]="'icon' + $index" placeholder="bi bi-palette">
+            <label>Name</label>
+            <input [(ngModel)]="item.name" [name]="'name' + $index" placeholder="Rachel Bennett">
           </div>
           <div class="form-group">
-            <label>Title Main</label>
-            <input [(ngModel)]="item.titleMain" [name]="'main' + $index">
+            <label>Position</label>
+            <input [(ngModel)]="item.position" [name]="'position' + $index" placeholder="Strategy Director">
           </div>
         </div>
         <div class="form-group">
-          <label>Title Accent</label>
-          <input [(ngModel)]="item.titleAccent" [name]="'accent' + $index">
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          <textarea [(ngModel)]="item.description" [name]="'itemDesc' + $index" rows="2"></textarea>
+          <label>Image Path</label>
+          <input [(ngModel)]="item.image" [name]="'image' + $index" placeholder="assets/img/person/person-f-7.webp">
         </div>
       </div>
     }
-    <button class="add-btn" (click)="addItem()"><i class="bi bi-plus"></i> Add Service</button>
+    <button class="add-btn" (click)="addItem()"><i class="bi bi-plus"></i> Add Reference</button>
   </div>
 
   @if (saved()) {

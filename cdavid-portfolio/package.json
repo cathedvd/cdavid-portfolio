@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "server": "node server/server.js",
-    "server:dev": "node --watch server/server.js"
+    "server:dev": "node server/server.js",
+    "server:watch": "node --watch server/server.js"
   },
   "prettier": {
     "printWidth": 100,

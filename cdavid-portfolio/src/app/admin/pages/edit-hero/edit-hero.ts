@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ContentService } from '../../../services/content.service';
 import { HeroContent } from '../../../models/content.interfaces';
@@ -13,6 +13,16 @@ export class EditHero {
   private contentService = inject(ContentService);
   data: HeroContent = structuredClone(this.contentService.hero());
   saved = signal(false);
+  private hydrated = false;
+
+  constructor() {
+    effect(() => {
+      if (!this.hydrated && this.contentService.loaded()) {
+        this.data = structuredClone(this.contentService.hero());
+        this.hydrated = true;
+      }
+    });
+  }
 
   get typedItemsStr(): string {
     return this.data.typedItems.join(', ');
@@ -29,15 +39,19 @@ export class EditHero {
     this.data.socialLinks.splice(i, 1);
   }
 
-  save(): void {
-    this.contentService.updateSection('hero', structuredClone(this.data));
+  async save(): Promise<void> {
+    const success = await this.contentService.updateSection('hero', structuredClone(this.data));
+    if (!success) return;
+
+    this.data = structuredClone(this.contentService.hero());
     this.saved.set(true);
     setTimeout(() => this.saved.set(false), 2000);
   }
 
-  reset(): void {
+  async reset(): Promise<void> {
     if (confirm('Reset Hero to defaults?')) {
-      this.contentService.resetSection('hero');
+      const success = await this.contentService.resetSection('hero');
+      if (!success) return;
       this.data = structuredClone(this.contentService.hero());
     }
   }

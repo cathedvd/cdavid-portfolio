@@ -6,7 +6,6 @@ import { Stats } from '../../components/stats/stats';
 import { Skills } from '../../components/skills/skills';
 import { Portfolio } from '../../components/portfolio/portfolio';
 import { Services } from '../../components/services/services';
-import { Testimonials } from '../../components/testimonials/testimonials';
 import { Contact } from '../../components/contact/contact';
 import { Footer } from '../../components/footer/footer';
 @Component({
@@ -19,7 +18,6 @@ import { Footer } from '../../components/footer/footer';
     Skills,
     Portfolio,
     Services,
-    Testimonials,
     Contact,
     Footer
   ],

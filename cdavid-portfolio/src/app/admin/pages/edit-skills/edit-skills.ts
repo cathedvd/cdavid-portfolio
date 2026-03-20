@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ContentService } from '../../../services/content.service';
 import { SkillsContent } from '../../../models/content.interfaces';
@@ -13,21 +13,35 @@ export class EditSkills {
   private contentService = inject(ContentService);
   data: SkillsContent = structuredClone(this.contentService.skills());
   saved = signal(false);
+  private hydrated = false;
+
+  constructor() {
+    effect(() => {
+      if (!this.hydrated && this.contentService.loaded()) {
+        this.data = structuredClone(this.contentService.skills());
+        this.hydrated = true;
+      }
+    });
+  }
 
   addCategory(): void { this.data.categories.push({ title: '', skills: [] }); }
   removeCategory(i: number): void { this.data.categories.splice(i, 1); }
   addSkill(catIdx: number): void { this.data.categories[catIdx].skills.push({ name: '', percentage: 50, tooltip: '' }); }
   removeSkill(catIdx: number, skillIdx: number): void { this.data.categories[catIdx].skills.splice(skillIdx, 1); }
 
-  save(): void {
-    this.contentService.updateSection('skills', structuredClone(this.data));
+  async save(): Promise<void> {
+    const success = await this.contentService.updateSection('skills', structuredClone(this.data));
+    if (!success) return;
+
+    this.data = structuredClone(this.contentService.skills());
     this.saved.set(true);
     setTimeout(() => this.saved.set(false), 2000);
   }
 
-  reset(): void {
+  async reset(): Promise<void> {
     if (confirm('Reset Skills to defaults?')) {
-      this.contentService.resetSection('skills');
+      const success = await this.contentService.resetSection('skills');
+      if (!success) return;
       this.data = structuredClone(this.contentService.skills());
     }
   }

@@ -5,41 +5,17 @@
   </div>
 
   <div class="container">
-    <div class="service-header">
-      <div class="row align-items-center">
-        <div class="col-lg-8 col-md-12">
-          <div class="service-intro">
-            <h2 class="service-heading">
-              @for (line of services().headingLines; track $index) {
-                <div>@if ($index > 0) {<span>{{ line }}</span>} @else {{{ line }}}</div>
-              }
-            </h2>
+    <div class="references-grid">
+      @for (item of services().items; track item.name) {
+        <article class="reference-card">
+          <div class="reference-image">
+            <img [src]="item.image" [alt]="item.name" loading="lazy">
           </div>
-        </div>
-        <div class="col-lg-4 col-md-12">
-          <div class="service-summary">
-            <p>{{ services().summary }}</p>
-            <a routerLink="/service-details" class="service-btn">
-              View All Services
-              <i class="bi bi-arrow-right"></i>
-            </a>
+          <div class="reference-details">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.position }}</p>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      @for (item of services().items; track item.titleMain) {
-        <div class="col-lg-4 col-md-6">
-          <div class="service-card position-relative z-1">
-            <div class="service-icon"><i [class]="item.icon"></i></div>
-            <a routerLink="/service-details" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-            <h3><a routerLink="/service-details">{{ item.titleMain }} <span>{{ item.titleAccent }}</span></a></h3>
-            <p>{{ item.description }}</p>
-          </div>
-        </div>
+        </article>
       }
     </div>
   </div>

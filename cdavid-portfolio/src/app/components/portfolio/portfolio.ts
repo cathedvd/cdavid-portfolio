@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal, computed } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, signal, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import GLightbox from 'glightbox';
 import { PortfolioService, PortfolioProject } from '../../services/portfolio.service';
@@ -9,9 +9,11 @@ import { PortfolioService, PortfolioProject } from '../../services/portfolio.ser
   templateUrl: './portfolio.html',
   styleUrl: './portfolio.scss',
 })
-export class Portfolio implements OnInit {
+export class Portfolio implements OnInit, OnDestroy {
   private portfolioService = inject(PortfolioService);
   private lightbox: any = null;
+  private refreshHandle: ReturnType<typeof setInterval> | null = null;
+  private lastSnapshot = '';
 
   items = signal<PortfolioProject[]>([]);
   activeFilter = signal('*');
@@ -35,18 +37,39 @@ export class Portfolio implements OnInit {
   });
 
   ngOnInit(): void {
-    this.portfolioService.getPortfolio().subscribe({
-      next: (data) => {
-        this.items.set(data);
-        setTimeout(() => this.initGlightbox(), 200);
-      }
-    });
+    this.loadPortfolio();
+
+    if (typeof window !== 'undefined') {
+      this.refreshHandle = window.setInterval(() => this.loadPortfolio(), 1500);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.refreshHandle) {
+      window.clearInterval(this.refreshHandle);
+    }
+    this.lightbox?.destroy();
   }
 
   setFilter(filterValue: string): void {
     this.activeFilter.set(filterValue);
     // Re-init GLightbox after filter changes the DOM
     setTimeout(() => this.initGlightbox(), 100);
+  }
+
+  private loadPortfolio(): void {
+    this.portfolioService.getPortfolio().subscribe({
+      next: (data) => {
+        const snapshot = JSON.stringify(data);
+        if (snapshot === this.lastSnapshot) {
+          return;
+        }
+
+        this.lastSnapshot = snapshot;
+        this.items.set(data);
+        setTimeout(() => this.initGlightbox(), 200);
+      }
+    });
   }
 
   private initGlightbox(): void {

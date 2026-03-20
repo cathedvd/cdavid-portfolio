@@ -6,30 +6,25 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const IS_VERCEL = process.env.VERCEL === '1' || process.env.VERCEL === 'true';
 
-// Paths
 const DATA_DIR = path.join(__dirname, 'data');
+const CONTENT_JSON = path.join(DATA_DIR, 'content.json');
 const PORTFOLIO_JSON = path.join(DATA_DIR, 'portfolio.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads', 'portfolio');
 const ANGULAR_DIST = path.join(__dirname, '..', 'dist', 'cdavid-portfolio', 'browser');
 
-// Ensure directories exist
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
-// Initialize portfolio.json if it doesn't exist
 if (!fs.existsSync(PORTFOLIO_JSON)) {
   fs.writeFileSync(PORTFOLIO_JSON, JSON.stringify([], null, 2));
 }
 
-// Middleware
 app.use(cors());
-app.use(express.json());
-
-// Serve uploaded images as static files
+app.use(express.json({ limit: '2mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Multer config — only accept image files
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, UPLOADS_DIR),
   filename: (_req, file, cb) => {
@@ -50,42 +45,78 @@ const fileFilter = (_req, file, cb) => {
 
 const upload = multer({ storage, fileFilter, limits: { fileSize: 10 * 1024 * 1024 } });
 
-// ── API Routes ──────────────────────────────────────────────────
-
-// GET /api/portfolio — return portfolio data
-app.get('/api/portfolio', (_req, res) => {
+function readJson(filePath, fallback) {
   try {
-    const data = JSON.parse(fs.readFileSync(PORTFOLIO_JSON, 'utf-8'));
-    res.json(data);
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
   } catch {
-    res.json([]);
+    return fallback;
+  }
+}
+
+function writeJson(filePath, data) {
+  if (IS_VERCEL) {
+    const err = new Error('Production is read-only on Vercel. Edit locally, commit, and redeploy.');
+    err.statusCode = 403;
+    throw err;
+  }
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+}
+
+app.get('/api/content', (_req, res) => {
+  const data = readJson(CONTENT_JSON, {});
+  res.set('Cache-Control', 'no-store');
+  res.json(data);
+});
+
+app.post('/api/content', (req, res) => {
+  try {
+    writeJson(CONTENT_JSON, req.body);
+    res.json(req.body);
+  } catch (err) {
+    res.status(err.statusCode || 500).json({ error: err.message });
   }
 });
 
-// POST /api/portfolio — save portfolio data
+app.get('/api/portfolio', (_req, res) => {
+  const data = readJson(PORTFOLIO_JSON, []);
+  res.set('Cache-Control', 'no-store');
+  res.json(data);
+});
+
 app.post('/api/portfolio', (req, res) => {
   try {
-    const data = req.body;
-    fs.writeFileSync(PORTFOLIO_JSON, JSON.stringify(data, null, 2));
-    res.json(data);
+    writeJson(PORTFOLIO_JSON, req.body);
+    res.json(req.body);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to save portfolio data', details: err.message });
+    res.status(err.statusCode || 500).json({ error: err.message });
   }
 });
 
-// POST /api/portfolio/upload — upload an image
 app.post('/api/portfolio/upload', upload.single('image'), (req, res) => {
+  if (IS_VERCEL) {
+    return res.status(403).json({
+      error: 'Production is read-only on Vercel. Upload images locally, commit them, and redeploy.'
+    });
+  }
+
   if (!req.file) {
     return res.status(400).json({ error: 'No image file provided' });
   }
+
   const filename = req.file.filename;
   const imagePath = `/uploads/portfolio/${filename}`;
-  res.json({ filename, imagePath });
+  return res.json({ filename, imagePath });
 });
 
-// DELETE /api/portfolio/upload/:filename — delete an image
 app.delete('/api/portfolio/upload/:filename', (req, res) => {
-  const filename = path.basename(req.params.filename); // sanitize
+  if (IS_VERCEL) {
+    return res.status(403).json({
+      error: 'Production is read-only on Vercel. Delete images locally, commit, and redeploy.'
+    });
+  }
+
+  const filename = path.basename(req.params.filename);
   const filePath = path.join(UPLOADS_DIR, filename);
 
   if (!fs.existsSync(filePath)) {
@@ -94,27 +125,25 @@ app.delete('/api/portfolio/upload/:filename', (req, res) => {
 
   try {
     fs.unlinkSync(filePath);
-    res.json({ message: 'File deleted', filename });
+    return res.json({ message: 'File deleted', filename });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to delete file', details: err.message });
+    return res.status(500).json({ error: 'Failed to delete file', details: err.message });
   }
 });
 
-// ── Serve Angular app ──────────────────────────────────────────
+if (!IS_VERCEL) {
+  app.use(express.static(ANGULAR_DIST));
 
-app.use(express.static(ANGULAR_DIST));
+  app.get('/{*splat}', (_req, res) => {
+    const indexPath = path.join(ANGULAR_DIST, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send('Angular build not found. Run "npm run build" first.');
+    }
+  });
+}
 
-// SPA fallback — serve index.html for all non-API, non-upload routes
-app.get('/{*splat}', (_req, res) => {
-  const indexPath = path.join(ANGULAR_DIST, 'index.html');
-  if (fs.existsSync(indexPath)) {
-    res.sendFile(indexPath);
-  } else {
-    res.status(404).send('Angular build not found. Run "npm run build" first.');
-  }
-});
-
-// Error handler for multer
 app.use((err, _req, res, _next) => {
   if (err instanceof multer.MulterError) {
     return res.status(400).json({ error: err.message });
@@ -124,6 +153,10 @@ app.use((err, _req, res, _next) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT} (API: /api/content, /api/portfolio)`);
+  });
+}
+
+module.exports = app;

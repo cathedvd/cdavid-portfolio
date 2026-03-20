@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ContentService } from '../../../services/content.service';
 import { ServicesContent } from '../../../models/content.interfaces';
@@ -13,22 +13,39 @@ export class EditServices {
   private contentService = inject(ContentService);
   data: ServicesContent = structuredClone(this.contentService.services());
   saved = signal(false);
+  private hydrated = false;
 
-  get headingStr(): string { return this.data.headingLines.join('\n'); }
-  set headingStr(val: string) { this.data.headingLines = val.split('\n').filter(Boolean); }
+  constructor() {
+    effect(() => {
+      if (!this.hydrated && this.contentService.loaded()) {
+        this.data = structuredClone(this.contentService.services());
+        this.hydrated = true;
+      }
+    });
+  }
 
-  addItem(): void { this.data.items.push({ icon: 'bi bi-star', titleMain: '', titleAccent: '', description: '' }); }
+  addItem(): void {
+    this.data.items.push({
+      image: 'assets/img/person/person-f-7.webp',
+      name: '',
+      position: ''
+    });
+  }
   removeItem(i: number): void { this.data.items.splice(i, 1); }
 
-  save(): void {
-    this.contentService.updateSection('services', structuredClone(this.data));
+  async save(): Promise<void> {
+    const success = await this.contentService.updateSection('services', structuredClone(this.data));
+    if (!success) return;
+
+    this.data = structuredClone(this.contentService.services());
     this.saved.set(true);
     setTimeout(() => this.saved.set(false), 2000);
   }
 
-  reset(): void {
-    if (confirm('Reset Services to defaults?')) {
-      this.contentService.resetSection('services');
+  async reset(): Promise<void> {
+    if (confirm('Reset References to defaults?')) {
+      const success = await this.contentService.resetSection('services');
+      if (!success) return;
       this.data = structuredClone(this.contentService.services());
     }
   }

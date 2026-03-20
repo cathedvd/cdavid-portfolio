@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, inject, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
@@ -12,9 +12,10 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
   templateUrl: './portfolio-details.html',
   styleUrl: './portfolio-details.scss',
 })
-export class PortfolioDetails implements OnInit {
+export class PortfolioDetails implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private portfolioService = inject(PortfolioService);
+  private refreshHandle: ReturnType<typeof setInterval> | null = null;
 
   project = signal<PortfolioProject | null>(null);
   loading = signal(true);
@@ -27,13 +28,31 @@ export class PortfolioDetails implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadProject();
+
+    if (typeof window !== 'undefined') {
+      this.refreshHandle = window.setInterval(() => this.loadProject(), 1500);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.refreshHandle) {
+      window.clearInterval(this.refreshHandle);
+    }
+  }
+
+  private loadProject(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.portfolioService.getPortfolio().subscribe({
       next: (data) => {
         const found = data.find(p => p.id === id);
+        const previous = JSON.stringify(this.project());
+        const current = JSON.stringify(found ?? null);
+
         this.project.set(found ?? null);
         this.loading.set(false);
-        if (found) {
+
+        if (found && previous !== current) {
           setTimeout(() => this.initSwiper(), 200);
         }
       },

@@ -1,118 +1,113 @@
 [
   {
-    "id": "1774012647631",
-    "title": "CompTIA: IT Fundamentals",
-    "description": "",
-    "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774012654799-948390.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "May 30, 2023",
     "projectUrl": "https://www.credly.com/badges/a34ae637-2297-4227-8ade-52c5bd7f2691/public_",
-    "additionalImages": []
-  },
-  {
-    "id": "1774012823233",
-    "title": "Holy Angel University Skills Badge - Information Gathering Specialist",
+    "additionalImages": [],
+    "id": "1774012647631",
+    "title": "CompTIA: IT Fundamentals",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774012826865-339843.png",
+    "imagePath": "/uploads/portfolio/1774012654799-948390.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://badges.parchment.com/public/assertions/N63QQJuwRKuUruT03hHGuQ?identity__email=csdavid@student.hau.edu.ph&action=download",
-    "additionalImages": []
-  },
-  {
-    "id": "1774012892620",
-    "title": "FreeCodeCamp: Responsive Web Designs",
+    "additionalImages": [],
+    "id": "1774012823233",
+    "title": "Holy Angel University Skills Badge - Information Gathering Specialist",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774012896112-950138.png",
+    "imagePath": "/uploads/portfolio/1774012826865-339843.png"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.freecodecamp.org/certification/cathedvd/responsive-web-design",
-    "additionalImages": []
-  },
-  {
-    "id": "1774012918169",
-    "title": "FreeCodeCamp: Legacy JavaScript Algrorithms and Data structure",
+    "additionalImages": [],
+    "id": "1774012892620",
+    "title": "FreeCodeCamp: Responsive Web Designs",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774012939552-918993.png",
+    "imagePath": "/uploads/portfolio/1774012896112-950138.png"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.freecodecamp.org/certification/cathedvd/javascript-algorithms-and-data-structures",
-    "additionalImages": []
-  },
-  {
-    "id": "1774012966675",
-    "title": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+    "additionalImages": [],
+    "id": "1774012918169",
+    "title": "FreeCodeCamp: Legacy JavaScript Algrorithms and Data structure",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013019632-595366.jpg",
+    "imagePath": "/uploads/portfolio/1774012939552-918993.png"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/1e386662-b7e7-4650-9d8e-1e3078d3373f/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013055842",
-    "title": "CCNAv7: Switching, Routing, and Wireless Essentials",
+    "additionalImages": [],
+    "id": "1774012966675",
+    "title": "AWS Academy Graduate - AWS Academy Cloud Foundations",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013059737-580519.jpg",
+    "imagePath": "/uploads/portfolio/1774013019632-595366.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/e15c7519-c479-4e9c-95f9-08e0b09bb0ff/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013075241",
-    "title": "CCNAv7: Enterprise Networking, Security, and Automation",
+    "additionalImages": [],
+    "id": "1774013055842",
+    "title": "CCNAv7: Switching, Routing, and Wireless Essentials",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013077824-145406.jpg",
+    "imagePath": "/uploads/portfolio/1774013059737-580519.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/d634ece0-32a3-477e-a03e-2f3c2af1732e/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013088006",
-    "title": "AWS Academy Graduate - AWS Academy Cloud Security Foundations",
+    "additionalImages": [],
+    "id": "1774013075241",
+    "title": "CCNAv7: Enterprise Networking, Security, and Automation",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013091385-72690.jpg",
+    "imagePath": "/uploads/portfolio/1774013077824-145406.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/f146ce47-b47c-4e1c-81f6-d19cddd8e691/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013108455",
-    "title": "Cisco Certificate in Ethical Hacking",
+    "additionalImages": [],
+    "id": "1774013088006",
+    "title": "AWS Academy Graduate - AWS Academy Cloud Security Foundations",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013114700-964051.jpg",
+    "imagePath": "/uploads/portfolio/1774013091385-72690.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/24f9675a-6627-4c2a-9380-4184246612b9/public_url",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013108455",
+    "title": "Cisco Certificate in Ethical Hacking",
+    "description": "",
+    "category": "Certifications",
+    "imagePath": "/uploads/portfolio/1774013114700-964051.jpg"
   },
   {
-    "id": "1774013141368",
-    "title": "Philippine Army - Cyber DefenseExercise (TRON 2025)",
-    "description": "2nd place",
-    "category": "Competitions",
-    "imagePath": "/uploads/portfolio/1774013259928-857664.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "March 2025",
@@ -122,38 +117,38 @@
       "/uploads/portfolio/1774013316142-802620.jpg",
       "/uploads/portfolio/1774013474080-314202.jpg",
       "/uploads/portfolio/1774013476181-269324.jpg"
-    ]
+    ],
+    "id": "1774013141368",
+    "title": "Philippine Army - Cyber DefenseExercise (TRON 2025)",
+    "description": "2nd place",
+    "category": "Competitions",
+    "imagePath": "/uploads/portfolio/1774013259928-857664.jpg"
   },
   {
-    "id": "1774013319293",
-    "title": "Trend Micro University Capture-the-Flag   ",
-    "description": "Champion",
-    "category": "Competitions",
-    "imagePath": "/uploads/portfolio/1774013323288-253445.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "September 2024",
     "projectUrl": "",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013319293",
+    "title": "Trend Micro University Capture-the-Flag   ",
+    "description": "Champion",
+    "category": "Competitions",
+    "imagePath": "/uploads/portfolio/1774013323288-253445.jpg"
   },
   {
-    "id": "1774013363527",
-    "title": "Trend Micro University Capture-the-Flag",
-    "description": "Top 10 Finalist (Rank 9/199)",
-    "category": "Competitions",
-    "imagePath": "/uploads/portfolio/1774013373275-794153.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "August 2025",
     "projectUrl": "",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013363527",
+    "title": "Trend Micro University Capture-the-Flag",
+    "description": "Top 10 Finalist (Rank 9/199)",
+    "category": "Competitions",
+    "imagePath": "/uploads/portfolio/1774013373275-794153.jpg"
   },
   {
-    "id": "1774013395749",
-    "title": "DICT Hack4Gov Region III  ",
-    "description": "2nd runner up",
-    "category": "Competitions",
-    "imagePath": "/uploads/portfolio/1774013439179-697801.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "December 2025",
@@ -162,50 +157,50 @@
       "/uploads/portfolio/1774013443130-958872.jpg",
       "/uploads/portfolio/1774013447047-851703.jpg",
       "/uploads/portfolio/1774013449539-916858.jpg"
-    ]
+    ],
+    "id": "1774013395749",
+    "title": "DICT Hack4Gov Region III  ",
+    "description": "2nd runner up",
+    "category": "Competitions",
+    "imagePath": "/uploads/portfolio/1774013439179-697801.jpg"
   },
   {
-    "id": "1774013490435",
-    "title": "Holy Angel University - CSIA Morto o Vivo: flag{j30p@rdy} ",
-    "description": "1st runner up",
-    "category": "Competitions",
-    "imagePath": "/uploads/portfolio/1774013495077-438866.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "October 2023",
     "projectUrl": "",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013490435",
+    "title": "Holy Angel University - CSIA Morto o Vivo: flag{j30p@rdy} ",
+    "description": "1st runner up",
+    "category": "Competitions",
+    "imagePath": "/uploads/portfolio/1774013495077-438866.jpg"
   },
   {
-    "id": "1774013529095",
-    "title": "Junior High School",
-    "description": "Relevant Coursework: Top 45 Academic Scholarship, Consistent with Honors",
-    "category": "Education",
-    "imagePath": "/uploads/portfolio/1774013588563-866176.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "April 2020",
     "projectUrl": "",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013529095",
+    "title": "Junior High School",
+    "description": "Relevant Coursework: Top 45 Academic Scholarship, Consistent with Honors",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1774013588563-866176.jpg"
   },
   {
-    "id": "1774013634785",
-    "title": "Senior High - Science, Technology, Engineering, and Mathematics (STEM) strand",
-    "description": "Relevant Coursework: Top 45 Academic Scholarship, Consistent with Highest Honors",
-    "category": "Education",
-    "imagePath": "/uploads/portfolio/1774013643184-316999.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "April 2022",
     "projectUrl": "",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774013634785",
+    "title": "Senior High - Science, Technology, Engineering, and Mathematics (STEM) strand",
+    "description": "Relevant Coursework: Top 45 Academic Scholarship, Consistent with Highest Honors",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1774013643184-316999.jpg"
   },
   {
-    "id": "1774013675709",
-    "title": "College - Bachelor of Science in Cybersecurity",
-    "description": "",
-    "category": "Education",
-    "imagePath": "/uploads/portfolio/1774013698459-559102.jpg",
     "detailedDescription": "Relevant Coursework: Top 1% Academic Scholarship, Consistent President’s Lister, Sinag Award of Merit, University Outstanding Student Competitor",
     "client": "",
     "projectDate": "April 2026 ",
@@ -218,98 +213,86 @@
       "/uploads/portfolio/1774013788592-279645.jpg",
       "/uploads/portfolio/1774013861247-957682.jpg",
       "/uploads/portfolio/1774013863479-92898.jpg"
-    ]
+    ],
+    "id": "1774013675709",
+    "title": "College - Bachelor of Science in Cybersecurity",
+    "description": "",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1774013698459-559102.jpg"
   },
   {
-    "id": "1774013866392",
-    "title": "Fortinet Certified Fundamentals in Cybersecurity ",
-    "description": "",
-    "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013874741-786376.jpg",
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/921d1f33-7f72-4b22-b166-6344446e0efa/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013933934",
-    "title": "Fortinet Certified Associate in Cybersecurity",
+    "additionalImages": [],
+    "id": "1774013866392",
+    "title": "Fortinet Certified Fundamentals in Cybersecurity ",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013938514-283135.jpg",
+    "imagePath": "/uploads/portfolio/1774013874741-786376.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/9d91af95-bf9c-4dc8-a5f1-ab3d03193e06/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013953974",
-    "title": "Offensive Security Capture the Flag - Operation SMB Exploit",
+    "additionalImages": [],
+    "id": "1774013933934",
+    "title": "Fortinet Certified Associate in Cybersecurity",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013959685-602037.jpg",
+    "imagePath": "/uploads/portfolio/1774013938514-283135.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/50d26d5f-16cf-4476-829a-389f58c25879/public_url",
-    "additionalImages": []
-  },
-  {
-    "id": "1774013994386",
-    "title": "Intermediate Machine Learning",
+    "additionalImages": [],
+    "id": "1774013953974",
+    "title": "Offensive Security Capture the Flag - Operation SMB Exploit",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774013998308-120343.jpg",
+    "imagePath": "/uploads/portfolio/1774013959685-602037.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.kaggle.com/learn/certification/cathereendavid/intermediate-machine-learning",
-    "additionalImages": []
-  },
-  {
-    "id": "1774014032628",
-    "title": "Intro to Machine Learning",
+    "additionalImages": [],
+    "id": "1774013994386",
+    "title": "Intermediate Machine Learning",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774014035332-732628.jpg",
+    "imagePath": "/uploads/portfolio/1774013998308-120343.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.kaggle.com/learn/certification/cathereendavid/intro-to-machine-learning",
-    "additionalImages": []
-  },
-  {
-    "id": "1774014248984",
-    "title": "",
-    "description": "",
-    "category": "",
-    "imagePath": "",
-    "detailedDescription": "",
-    "client": "",
-    "projectDate": "",
-    "projectUrl": "",
-    "additionalImages": []
-  },
-  {
-    "id": "1774014326542",
-    "title": "CCNAv7: Introduction to Networks",
+    "additionalImages": [],
+    "id": "1774014032628",
+    "title": "Intro to Machine Learning",
     "description": "",
     "category": "Certifications",
-    "imagePath": "/uploads/portfolio/1774014331824-865173.jpg",
+    "imagePath": "/uploads/portfolio/1774014035332-732628.jpg"
+  },
+  {
     "detailedDescription": "",
     "client": "",
     "projectDate": "",
     "projectUrl": "https://www.credly.com/badges/82d0874b-d6e9-42e7-8575-15c82979c125/public_url",
-    "additionalImages": []
+    "additionalImages": [],
+    "id": "1774014326542",
+    "title": "CCNAv7: Introduction to Networks",
+    "description": "",
+    "category": "Certifications",
+    "imagePath": "/uploads/portfolio/1774014331824-865173.jpg"
   },
   {
-    "id": "1774014409087",
-    "title": "On-The-Job Training - MEC Networks",
-    "description": "",
-    "category": "Experience",
-    "imagePath": "/uploads/portfolio/1774014462805-740577.jpg",
     "detailedDescription": "Technical Planning and Operations Intern\t \n•\tSupported network planning, configuration, and deployment activities for enterprise networking solutions.\n•\tAssisted in wireless network design and infrastructure planning, including heatmapping and BOM preparation.\n•\tWorked with enterprise networking platforms and devices including Aruba, H3C, Fortinet and Ruckus solutions.\n•\tObserved post-sales technical support, troubleshooting, and client site deployments alongside systems engineers.",
     "client": "",
     "projectDate": "Nov 2025 – Feb 2026",
@@ -347,6 +330,11 @@
       "/uploads/portfolio/1774014702331-738555.jpeg",
       "/uploads/portfolio/1774014704745-122396.jpeg",
       "/uploads/portfolio/1774014707041-992077.jpeg"
-    ]
+    ],
+    "id": "1774014409087",
+    "title": "On-The-Job Training - MEC Networks",
+    "description": "",
+    "category": "Experience",
+    "imagePath": "/uploads/portfolio/1774014462805-740577.jpg"
   }
 ]

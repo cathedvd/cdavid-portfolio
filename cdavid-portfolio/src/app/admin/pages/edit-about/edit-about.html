@@ -1,0 +1,119 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit About Section</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Profile Info</h3>
+    <div class="form-group">
+      <label>Profile Image Path</label>
+      <input [(ngModel)]="data.profileImage" name="profileImage">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Name</label>
+        <input [(ngModel)]="data.name" name="name">
+      </div>
+      <div class="form-group">
+        <label>Profession</label>
+        <input [(ngModel)]="data.profession" name="profession">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Email</label>
+        <input [(ngModel)]="data.email" name="email">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input [(ngModel)]="data.phone" name="phone">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Location</label>
+      <input [(ngModel)]="data.location" name="location">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Section Content</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Badge Text</label>
+        <input [(ngModel)]="data.sectionBadge" name="sectionBadge">
+      </div>
+      <div class="form-group">
+        <label>Heading</label>
+        <input [(ngModel)]="data.sectionHeading" name="sectionHeading">
+      </div>
+    </div>
+
+    <label>Description Paragraphs</label>
+    @for (p of data.descriptionParagraphs; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Paragraph {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removeParagraph($index)">Remove</button>
+        </div>
+        <div class="form-group">
+          <textarea [(ngModel)]="data.descriptionParagraphs[$index]" [name]="'para' + $index" rows="3"></textarea>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addParagraph()"><i class="bi bi-plus"></i> Add Paragraph</button>
+  </div>
+
+  <div class="form-section">
+    <h3>Stats</h3>
+    @for (stat of data.stats; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Stat {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removeStat($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Number</label>
+            <input [(ngModel)]="stat.number" [name]="'statNum' + $index">
+          </div>
+          <div class="form-group">
+            <label>Label</label>
+            <input [(ngModel)]="stat.label" [name]="'statLabel' + $index">
+          </div>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addStat()"><i class="bi bi-plus"></i> Add Stat</button>
+  </div>
+
+  <div class="form-section">
+    <h3>Details</h3>
+    @for (detail of data.details; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Detail {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removeDetail($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Label</label>
+            <input [(ngModel)]="detail.label" [name]="'detailLabel' + $index">
+          </div>
+          <div class="form-group">
+            <label>Value</label>
+            <input [(ngModel)]="detail.value" [name]="'detailValue' + $index">
+          </div>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addDetail()"><i class="bi bi-plus"></i> Add Detail</button>
+  </div>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

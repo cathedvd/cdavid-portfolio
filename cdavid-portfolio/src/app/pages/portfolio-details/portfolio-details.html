@@ -1,0 +1,86 @@
+<app-header />
+
+<main class="main">
+  <div class="page-title dark-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+      <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a routerLink="/">Home</a></li>
+          <li class="current">Portfolio Details</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <section class="section">
+      <div class="container"><p>Loading...</p></div>
+    </section>
+  } @else if (project(); as p) {
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            @if (getAllImages(p).length > 1) {
+              <div class="portfolio-details-slider swiper init-swiper">
+                <div class="swiper-wrapper align-items-center">
+                  @for (img of getAllImages(p); track img) {
+                    <div class="swiper-slide">
+                      <img [src]="img" alt="Portfolio Image" class="img-fluid" loading="lazy">
+                    </div>
+                  }
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            } @else if (p.imagePath) {
+              <div class="portfolio-single-image">
+                <img [src]="p.imagePath" [alt]="p.title" class="img-fluid">
+              </div>
+            }
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Category</strong>: {{ p.category }}</li>
+                @if (p.client) {
+                  <li><strong>Client</strong>: {{ p.client }}</li>
+                }
+                @if (p.projectDate) {
+                  <li><strong>Project date</strong>: {{ p.projectDate }}</li>
+                }
+                @if (p.projectUrl) {
+                  <li><strong>Project URL</strong>: <a [href]="p.projectUrl" target="_blank">{{ p.projectUrl }}</a></li>
+                }
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="portfolio-description">
+              <h2>{{ p.title }}</h2>
+              @if (p.detailedDescription) {
+                @for (para of p.detailedDescription.split('\n\n'); track $index) {
+                  <p>{{ para }}</p>
+                }
+              } @else if (p.description) {
+                <p>{{ p.description }}</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  } @else {
+    <section class="section">
+      <div class="container"><p>Project not found.</p></div>
+    </section>
+  }
+</main>
+
+<app-footer />

@@ -1,0 +1,28 @@
+<div class="admin-wrapper">
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <h2>Admin Panel</h2>
+    </div>
+    <nav class="sidebar-nav">
+      @for (item of sidebarItems; track item.route) {
+        <a [routerLink]="item.route" routerLinkActive="active" class="nav-item">
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" class="nav-item" target="_blank">
+        <i class="bi bi-eye"></i>
+        <span>View Site</span>
+      </a>
+      <button class="nav-item logout-btn" (click)="logout()">
+        <i class="bi bi-box-arrow-left"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+  <main class="admin-main">
+    <router-outlet />
+  </main>
+</div>

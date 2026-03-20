@@ -1,0 +1,19 @@
+<section id="stats" class="stats section light-background">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="stats-wrapper">
+          @for (item of stats().items; track item.label) {
+            <div class="stats-item">
+              <div class="icon-wrapper">
+                <i [class]="item.icon"></i>
+              </div>
+              <span [attr.data-purecounter-start]="0" [attr.data-purecounter-end]="item.endValue" data-purecounter-duration="1" class="purecounter"></span>
+              <p>{{ item.label }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

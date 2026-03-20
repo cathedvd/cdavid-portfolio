@@ -1,0 +1,39 @@
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>Dashboard</h1>
+    <p>Manage your portfolio content</p>
+  </div>
+
+  <div class="actions-bar">
+    <button class="btn-action export" (click)="exportContent()">
+      <i class="bi bi-download"></i> Export JSON
+    </button>
+    <label class="btn-action import">
+      <i class="bi bi-upload"></i> Import JSON
+      <input type="file" accept=".json" (change)="importContent($event)" hidden>
+    </label>
+    <button class="btn-action reset" (click)="resetAll()">
+      <i class="bi bi-arrow-counterclockwise"></i> Reset All
+    </button>
+  </div>
+
+  @if (importSuccess() === true) {
+    <div class="alert success">Content imported successfully!</div>
+  }
+  @if (importSuccess() === false) {
+    <div class="alert error">Import failed. Invalid JSON file.</div>
+  }
+
+  <div class="sections-grid">
+    @for (section of sections; track section.route) {
+      <a [routerLink]="section.route" class="section-card">
+        <div class="card-icon"><i [class]="section.icon"></i></div>
+        <div class="card-content">
+          <h3>{{ section.label }}</h3>
+          <p>{{ section.description }}</p>
+        </div>
+        <i class="bi bi-chevron-right card-arrow"></i>
+      </a>
+    }
+  </div>
+</div>

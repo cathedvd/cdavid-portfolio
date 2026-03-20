@@ -1,0 +1,66 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Services</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Section Info</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="data.sectionTitle" name="title">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="data.sectionDescription" name="desc">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Heading Lines (one per line)</label>
+      <textarea [(ngModel)]="headingStr" name="heading" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Summary</label>
+      <textarea [(ngModel)]="data.summary" name="summary" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Service Cards</h3>
+    @for (item of data.items; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">{{ item.titleMain }} {{ item.titleAccent }}</span>
+          <button class="remove-btn" (click)="removeItem($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Icon Class</label>
+            <input [(ngModel)]="item.icon" [name]="'icon' + $index" placeholder="bi bi-palette">
+          </div>
+          <div class="form-group">
+            <label>Title Main</label>
+            <input [(ngModel)]="item.titleMain" [name]="'main' + $index">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Title Accent</label>
+          <input [(ngModel)]="item.titleAccent" [name]="'accent' + $index">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea [(ngModel)]="item.description" [name]="'itemDesc' + $index" rows="2"></textarea>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addItem()"><i class="bi bi-plus"></i> Add Service</button>
+  </div>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

@@ -1,0 +1,41 @@
+<section id="hero" class="hero section">
+  <div class="background-elements">
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="hero-text">
+            <h1>{{ hero().brandName }}<span class="accent-text">{{ hero().brandAccent }}</span></h1>
+            <h2>{{ hero().fullName }}</h2>
+            <p class="lead">I'm a <span class="typed"></span></p>
+            <p class="description">{{ hero().description }}</p>
+
+            <div class="hero-actions">
+              <a [href]="hero().ctaPrimary.link" class="btn btn-primary">{{ hero().ctaPrimary.text }}</a>
+              <a [href]="hero().ctaSecondary.link" class="btn btn-outline">{{ hero().ctaSecondary.text }}</a>
+            </div>
+
+            <div class="social-links">
+              @for (link of hero().socialLinks; track link.icon) {
+                <a [href]="link.url"><i [class]="link.icon"></i></a>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="hero-visual">
+            <div class="profile-container">
+              <div class="profile-background"></div>
+              <img [src]="hero().profileImage" [alt]="hero().fullName" class="profile-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<header id="header" class="header dark-background d-flex flex-column justify-content-center" [class.header-show]="isOpen">
+  <i class="header-toggle d-xl-none bi" [ngClass]="isOpen ? 'bi-x' : 'bi-list'" (click)="toggleHeader()"></i>
+
+  <div class="header-container d-flex flex-column align-items-start">
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        @for (item of headerData().navItems; track item.href) {
+          <li><a [href]="item.href" (click)="closeOnMobile()"><i [class]="item.icon"></i> {{ item.label }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <div class="social-links text-center">
+      @for (link of headerData().socialLinks; track link.icon) {
+        <a [href]="link.url"><i [class]="link.icon"></i></a>
+      }
+    </div>
+  </div>
+</header>

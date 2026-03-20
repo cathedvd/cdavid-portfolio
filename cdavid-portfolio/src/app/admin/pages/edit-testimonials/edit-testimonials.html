@@ -1,0 +1,66 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Testimonials</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Section Info</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="data.sectionTitle" name="title">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="data.sectionDescription" name="desc">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Testimonial Items</h3>
+    @for (item of data.items; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">{{ item.clientName || 'New Testimonial' }}</span>
+          <button class="remove-btn" (click)="removeItem($index)">Remove</button>
+        </div>
+        <div class="form-group">
+          <label>Quote</label>
+          <textarea [(ngModel)]="item.quote" [name]="'quote' + $index" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Client Name</label>
+            <input [(ngModel)]="item.clientName" [name]="'name' + $index">
+          </div>
+          <div class="form-group">
+            <label>Position</label>
+            <input [(ngModel)]="item.clientPosition" [name]="'pos' + $index">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Client Image Path</label>
+            <input [(ngModel)]="item.clientImage" [name]="'img' + $index">
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" [(ngModel)]="item.highlight" [name]="'highlight' + $index">
+              Highlight (featured)
+            </label>
+          </div>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addItem()"><i class="bi bi-plus"></i> Add Testimonial</button>
+  </div>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

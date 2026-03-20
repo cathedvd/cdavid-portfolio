@@ -1,0 +1,64 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Header & Footer</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Navigation Items</h3>
+    @for (item of headerData.navItems; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">{{ item.label || 'New Link' }}</span>
+          <button class="remove-btn" (click)="removeNavItem($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Label</label>
+            <input [(ngModel)]="item.label" [name]="'navLabel' + $index">
+          </div>
+          <div class="form-group">
+            <label>Href</label>
+            <input [(ngModel)]="item.href" [name]="'navHref' + $index" placeholder="#section-id">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Icon Class</label>
+          <input [(ngModel)]="item.icon" [name]="'navIcon' + $index" placeholder="bi bi-house navicon">
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addNavItem()"><i class="bi bi-plus"></i> Add Nav Item</button>
+  </div>
+
+  <div class="form-section">
+    <h3>Social Links (Header)</h3>
+    @for (link of headerData.socialLinks; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Link {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removeSocialLink($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Icon Class</label>
+            <input [(ngModel)]="link.icon" [name]="'socialIcon' + $index" placeholder="bi bi-twitter-x">
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input [(ngModel)]="link.url" [name]="'socialUrl' + $index">
+          </div>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addSocialLink()"><i class="bi bi-plus"></i> Add Social Link</button>
+  </div>
+
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

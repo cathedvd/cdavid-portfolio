@@ -1,0 +1,103 @@
+@use '../../admin-shared' as *;
+
+.image-upload-area {
+  margin-bottom: 16px;
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+  max-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+
+  &.small {
+    max-width: 150px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  .remove-img-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(255, 59, 48, 0.9);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 59, 48, 1);
+    }
+  }
+}
+
+.additional-images-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 32px;
+  border: 2px dashed #333;
+  border-radius: 10px;
+  background: #0f0f0f;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #888;
+  max-width: 300px;
+
+  &.small {
+    padding: 16px 24px;
+    max-width: 150px;
+  }
+
+  i {
+    font-size: 28px;
+    color: #646cff;
+  }
+
+  span {
+    font-size: 13px;
+  }
+
+  small {
+    font-size: 11px;
+    color: #555;
+  }
+
+  &:hover {
+    border-color: #646cff;
+    background: rgba(100, 108, 255, 0.05);
+  }
+
+  &.uploading {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

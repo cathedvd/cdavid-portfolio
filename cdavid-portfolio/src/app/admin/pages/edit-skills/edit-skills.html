@@ -1,0 +1,66 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Skills</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Section Info</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="data.sectionTitle" name="title">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="data.sectionDescription" name="desc">
+      </div>
+    </div>
+  </div>
+
+  @for (cat of data.categories; track $index) {
+    <div class="form-section">
+      <h3>
+        Category: {{ cat.title || 'Untitled' }}
+        <button class="remove-btn" style="float:right" (click)="removeCategory($index)">Remove Category</button>
+      </h3>
+      <div class="form-group">
+        <label>Category Title</label>
+        <input [(ngModel)]="cat.title" [name]="'catTitle' + $index">
+      </div>
+
+      @for (skill of cat.skills; track $index; let si = $index) {
+        <div class="array-item">
+          <div class="item-header">
+            <span class="item-title">{{ skill.name || 'New Skill' }}</span>
+            <button class="remove-btn" (click)="removeSkill($index, si)">Remove</button>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Skill Name</label>
+              <input [(ngModel)]="skill.name" [name]="'skillName' + $index + '_' + si">
+            </div>
+            <div class="form-group">
+              <label>Percentage (0-100)</label>
+              <input type="number" min="0" max="100" [(ngModel)]="skill.percentage" [name]="'skillPct' + $index + '_' + si">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tooltip</label>
+            <input [(ngModel)]="skill.tooltip" [name]="'skillTip' + $index + '_' + si">
+          </div>
+        </div>
+      }
+      <button class="add-btn" (click)="addSkill($index)"><i class="bi bi-plus"></i> Add Skill</button>
+    </div>
+  }
+
+  <button class="add-btn" style="margin-bottom:20px" (click)="addCategory()"><i class="bi bi-plus"></i> Add Category</button>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

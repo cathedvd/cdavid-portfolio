@@ -1,0 +1,86 @@
+<section id="about" class="about section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-image">
+              <img [src]="about().profileImage" alt="Profile Image" class="img-fluid">
+            </div>
+            <div class="profile-badge">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+          </div>
+
+          <div class="profile-content">
+            <h3>{{ about().name }}</h3>
+            <p class="profession">{{ about().profession }}</p>
+
+            <div class="contact-links">
+              <a [href]="'mailto:' + about().email" class="contact-item">
+                <i class="bi bi-envelope"></i>
+                {{ about().email }}
+              </a>
+              <a [href]="'tel:' + about().phone" class="contact-item">
+                <i class="bi bi-telephone"></i>
+                {{ about().phone }}
+              </a>
+              <a href="#" class="contact-item">
+                <i class="bi bi-geo-alt"></i>
+                {{ about().location }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="about-content">
+          <div class="section-header">
+            <span class="badge-text">{{ about().sectionBadge }}</span>
+            <h2>{{ about().sectionHeading }}</h2>
+          </div>
+
+          <div class="description">
+            @for (paragraph of about().descriptionParagraphs; track $index) {
+              <p>{{ paragraph }}</p>
+            }
+          </div>
+
+          <div class="stats-grid">
+            @for (stat of about().stats; track stat.label) {
+              <div class="stat-item">
+                <div class="stat-number">{{ stat.number }}</div>
+                <div class="stat-label">{{ stat.label }}</div>
+              </div>
+            }
+          </div>
+
+          <div class="details-grid">
+            @for (row of [about().details.slice(0, 2), about().details.slice(2, 4)]; track $index) {
+              <div class="detail-row">
+                @for (detail of row; track detail.label) {
+                  <div class="detail-item">
+                    <span class="detail-label">{{ detail.label }}</span>
+                    <span class="detail-value">{{ detail.value }}</span>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="cta-section">
+            <a href="#" class="btn btn-primary">
+              <i class="bi bi-download"></i>
+              Download Resume
+            </a>
+            <a href="#" class="btn btn-outline">
+              <i class="bi bi-chat-dots"></i>
+              Let's Talk
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

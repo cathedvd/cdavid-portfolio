@@ -1,0 +1,90 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Hero Section</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Brand & Identity</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Brand Name</label>
+        <input [(ngModel)]="data.brandName" name="brandName" placeholder="e.g. Snap">
+      </div>
+      <div class="form-group">
+        <label>Brand Accent</label>
+        <input [(ngModel)]="data.brandAccent" name="brandAccent" placeholder="e.g. Folio">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input [(ngModel)]="data.fullName" name="fullName">
+    </div>
+    <div class="form-group">
+      <label>Typed Items (comma-separated)</label>
+      <input [(ngModel)]="typedItemsStr" name="typedItems" placeholder="UI/UX Designer, Web Developer">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="data.description" name="description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Profile Image Path</label>
+      <input [(ngModel)]="data.profileImage" name="profileImage" placeholder="assets/img/profile/...">
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Call-to-Action Buttons</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Primary Button Text</label>
+        <input [(ngModel)]="data.ctaPrimary.text" name="ctaPrimaryText">
+      </div>
+      <div class="form-group">
+        <label>Primary Button Link</label>
+        <input [(ngModel)]="data.ctaPrimary.link" name="ctaPrimaryLink">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Secondary Button Text</label>
+        <input [(ngModel)]="data.ctaSecondary.text" name="ctaSecondaryText">
+      </div>
+      <div class="form-group">
+        <label>Secondary Button Link</label>
+        <input [(ngModel)]="data.ctaSecondary.link" name="ctaSecondaryLink">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Social Links</h3>
+    @for (link of data.socialLinks; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Link {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removeSocialLink($index)">Remove</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Icon Class</label>
+            <input [(ngModel)]="link.icon" [name]="'socialIcon' + $index" placeholder="bi bi-github">
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input [(ngModel)]="link.url" [name]="'socialUrl' + $index" placeholder="https://...">
+          </div>
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addSocialLink()"><i class="bi bi-plus"></i> Add Social Link</button>
+  </div>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

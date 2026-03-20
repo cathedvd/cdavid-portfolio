@@ -1,0 +1,109 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Portfolio</h1>
+    <div class="header-actions">
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <p style="color:#888">Loading portfolio data...</p>
+  } @else {
+    @for (item of items(); track item.id; let i = $index) {
+      <div class="form-section">
+        <h3>
+          {{ item.title || 'New Project' }}
+          <button class="remove-btn" style="float:right" (click)="removeItem(i)">Delete Project</button>
+        </h3>
+
+        <!-- Main Image -->
+        <div class="image-upload-area">
+          <label style="color:#aaa;font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:block">Main Image (thumbnail)</label>
+          @if (item.imagePath) {
+            <div class="image-preview">
+              <img [src]="item.imagePath" [alt]="item.title">
+              <button class="remove-img-btn" (click)="removeMainImage(i)">
+                <i class="bi bi-trash"></i> Remove
+              </button>
+            </div>
+          } @else {
+            <label class="upload-zone" [class.uploading]="uploading() === 'main-' + i">
+              @if (uploading() === 'main-' + i) {
+                <i class="bi bi-arrow-repeat spin"></i><span>Uploading...</span>
+              } @else {
+                <i class="bi bi-cloud-arrow-up"></i><span>Upload main image</span>
+                <small>PNG, JPG, WEBP, GIF (max 10MB)</small>
+              }
+              <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" (change)="onMainImageSelect($event, i)" hidden>
+            </label>
+          }
+        </div>
+
+        <!-- Basic Fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Title</label>
+            <input [ngModel]="item.title" (ngModelChange)="updateField(i, 'title', $event)" [name]="'title' + i">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input [ngModel]="item.category" (ngModelChange)="updateField(i, 'category', $event)" [name]="'cat' + i">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Short Description (shown in portfolio grid)</label>
+          <textarea [ngModel]="item.description" (ngModelChange)="updateField(i, 'description', $event)" [name]="'desc' + i" rows="2"></textarea>
+        </div>
+        <!-- Detail Page Fields -->
+        <h3 style="margin-top:20px;font-size:14px">Portfolio Detail Page</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Client</label>
+            <input [ngModel]="item.client" (ngModelChange)="updateField(i, 'client', $event)" [name]="'client' + i">
+          </div>
+          <div class="form-group">
+            <label>Project Date</label>
+            <input [ngModel]="item.projectDate" (ngModelChange)="updateField(i, 'projectDate', $event)" [name]="'date' + i" placeholder="e.g. March 2024">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Project URL</label>
+          <input [ngModel]="item.projectUrl" (ngModelChange)="updateField(i, 'projectUrl', $event)" [name]="'url' + i" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label>Detailed Description (use blank lines to separate paragraphs)</label>
+          <textarea [ngModel]="item.detailedDescription" (ngModelChange)="updateField(i, 'detailedDescription', $event)" [name]="'detailed' + i" rows="5"></textarea>
+        </div>
+
+        <!-- Additional Images for Detail Page Slider -->
+        <div class="image-upload-area" style="margin-top:16px">
+          <label style="color:#aaa;font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;display:block">Additional Images (detail page slider)</label>
+          <div class="additional-images-grid">
+            @for (img of item.additionalImages || []; track img; let j = $index) {
+              <div class="image-preview small">
+                <img [src]="img" alt="Additional image">
+                <button class="remove-img-btn" (click)="removeAdditionalImage(i, j)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            }
+          </div>
+          <label class="upload-zone small" [class.uploading]="uploading() === 'additional-' + i" style="margin-top:8px">
+            @if (uploading() === 'additional-' + i) {
+              <i class="bi bi-arrow-repeat spin"></i><span>Uploading...</span>
+            } @else {
+              <i class="bi bi-plus"></i><span>Add image</span>
+            }
+            <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" (change)="onAdditionalImageSelect($event, i)" hidden>
+          </label>
+        </div>
+      </div>
+    }
+
+    <button class="add-btn" style="margin-bottom:20px" (click)="addItem()"><i class="bi bi-plus"></i> Add Project</button>
+  }
+
+  @if (saved()) {
+    <div class="save-toast">Portfolio saved!</div>
+  }
+</div>

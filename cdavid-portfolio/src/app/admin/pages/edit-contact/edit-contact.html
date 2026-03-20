@@ -1,0 +1,95 @@
+<div class="editor-page">
+  <div class="editor-header">
+    <h1>Edit Contact</h1>
+    <div class="header-actions">
+      <button class="btn-reset" (click)="reset()">Reset</button>
+      <button class="btn-save" (click)="save()">Save Changes</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Section Info</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="data.sectionTitle" name="title">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="data.sectionDescription" name="desc">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Contact Info Box</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Info Title</label>
+        <input [(ngModel)]="data.infoTitle" name="infoTitle">
+      </div>
+      <div class="form-group">
+        <label>Info Description</label>
+        <input [(ngModel)]="data.infoDescription" name="infoDesc">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Location Line 1</label>
+        <input [(ngModel)]="data.location.line1" name="loc1">
+      </div>
+      <div class="form-group">
+        <label>Location Line 2</label>
+        <input [(ngModel)]="data.location.line2" name="loc2">
+      </div>
+    </div>
+
+    <label>Phone Numbers</label>
+    @for (phone of data.phones; track $index) {
+      <div class="array-item">
+        <div class="item-header">
+          <span class="item-title">Phone {{ $index + 1 }}</span>
+          <button class="remove-btn" (click)="removePhone($index)">Remove</button>
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="data.phones[$index]" [name]="'phone' + $index">
+        </div>
+      </div>
+    }
+    <button class="add-btn" (click)="addPhone()"><i class="bi bi-plus"></i> Add Phone</button>
+
+    <div style="margin-top: 16px">
+      <label>Email Addresses</label>
+      @for (email of data.emails; track $index) {
+        <div class="array-item">
+          <div class="item-header">
+            <span class="item-title">Email {{ $index + 1 }}</span>
+            <button class="remove-btn" (click)="removeEmail($index)">Remove</button>
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="data.emails[$index]" [name]="'email' + $index">
+          </div>
+        </div>
+      }
+      <button class="add-btn" (click)="addEmail()"><i class="bi bi-plus"></i> Add Email</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h3>Contact Form</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Form Title</label>
+        <input [(ngModel)]="data.formTitle" name="formTitle">
+      </div>
+      <div class="form-group">
+        <label>Form Description</label>
+        <input [(ngModel)]="data.formDescription" name="formDesc">
+      </div>
+    </div>
+  </div>
+
+  @if (saved()) {
+    <div class="save-toast">Changes saved!</div>
+  }
+</div>

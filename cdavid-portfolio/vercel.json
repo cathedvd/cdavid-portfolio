@@ -3,14 +3,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/cdavid-portfolio/browser",
   "functions": {
-    "server.js": {
+    "api/index.js": {
       "includeFiles": "server/**",
       "maxDuration": 10
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server.js" },
-    { "source": "/uploads/(.*)", "destination": "/server.js" },
+    { "source": "/api/:path*", "destination": "/api?path=/api/:path*" },
+    { "source": "/uploads/:path*", "destination": "/api?path=/uploads/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

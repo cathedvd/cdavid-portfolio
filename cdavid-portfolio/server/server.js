@@ -23,6 +23,27 @@ if (!fs.existsSync(PORTFOLIO_JSON)) {
 
 app.use(cors());
 app.use(express.json({ limit: '2mb' }));
+
+function sendUploadFile(req, res, next) {
+  const relativePath = req.path.replace(/^\/api\/uploads/, '').replace(/^\/uploads/, '');
+
+  if (!relativePath || relativePath === '/') {
+    return next();
+  }
+
+  const normalizedPath = path.normalize(relativePath).replace(/^([/\\])+/, '');
+  const filePath = path.join(__dirname, 'uploads', normalizedPath);
+  const uploadsRoot = path.join(__dirname, 'uploads');
+
+  if (!filePath.startsWith(uploadsRoot) || !fs.existsSync(filePath)) {
+    return next();
+  }
+
+  return res.sendFile(filePath);
+}
+
+app.get('/uploads/{*splat}', sendUploadFile);
+app.get('/api/uploads/{*splat}', sendUploadFile);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const storage = multer.diskStorage({

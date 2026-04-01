@@ -21,68 +21,30 @@
     },
     "socialLinks": [
       {
-        "icon": "bi bi-dribbble",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-behance",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-github",
-        "url": "#"
+        "icon": "bi bi-facebook",
+        "url": "https://www.facebook.com/cathedvd"
       },
       {
         "icon": "bi bi-linkedin",
-        "url": "#"
+        "url": "https://www.linkedin.com/in/cathedvd/"
       }
     ]
   },
   "about": {
     "profileImage": "assets/img/profile/5db785d6-eee0-4b6c-b56c-50064197b7ba.jpg",
-    "name": "Marcus Thompson",
-    "profession": "Creative Director & Developer",
-    "email": "marcus@example.com",
-    "phone": "+1 (555) 123-4567",
-    "location": "San Francisco, CA",
+    "name": "Cathereen David",
+    "profession": "Cybersecurity G",
+    "email": "cathedvd.cyb@gmail.com",
+    "phone": "+63(999) 854-8904",
+    "location": "Magalang, Pampanga",
     "sectionBadge": "Get to Know Me",
     "sectionHeading": "Passionate About Creating Digital Experiences",
     "descriptionParagraphs": [
-      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
+      "I am an aspiring cybersecurity and networking professional with hands-on internship experience in ICT operations at MEC Networks, an IT consulting and distribution company. Currently assigned as a TPO Intern, I support technical and project-related operations through documentation, coordination, and product-related research, gaining exposure to real-world ICT workflows.",
+      "I have a strong foundation in networking and security, supported by multiple industry certifications including CCNA, Fortinet Cybersecurity certifications, AWS Cloud Security Foundations, and Ethical Hacking training. I actively participate in cybersecurity competitions and Capture the Flag (CTF) events, where I have developed skills in problem-solving, threat analysis, and practical security techniques."
     ],
-    "stats": [
-      {
-        "number": "150+",
-        "label": "Projects Completed"
-      },
-      {
-        "number": "5+",
-        "label": "Years Experience"
-      },
-      {
-        "number": "98%",
-        "label": "Client Satisfaction"
-      }
-    ],
-    "details": [
-      {
-        "label": "Specialization",
-        "value": "UI/UX Design & Development"
-      },
-      {
-        "label": "Experience Level",
-        "value": "Senior Professional"
-      },
-      {
-        "label": "Education",
-        "value": "Computer Science, MIT"
-      },
-      {
-        "label": "Languages",
-        "value": "English, Spanish, French"
-      }
-    ]
+    "stats": [],
+    "details": []
   },
   "stats": {
     "items": []
@@ -161,19 +123,19 @@
     "sectionDescription": "People who can speak about my work, character, and professional growth.",
     "items": [
       {
-        "image": "assets/img/person/person-f-7.webp",
+        "image": "assets/img/person/",
         "name": "Ezekiel Aaron Luna",
-        "position": "Strategy Director"
+        "position": "OJT Supervisor"
       },
       {
-        "image": "assets/img/person/person-m-7.webp",
-        "name": "Daniel Morgan",
-        "position": "Chief Innovation Officer"
+        "image": "assets/img/person/",
+        "name": "Dr. Marlon Tayag",
+        "position": "College Dean"
       },
       {
-        "image": "assets/img/person/person-f-8.webp",
-        "name": "Emma Thompson",
-        "position": "Digital Lead"
+        "image": "assets/img/person/",
+        "name": "Dr Joseph Esquivel",
+        "position": "Cisco Program Coordinator"
       }
     ]
   },
@@ -182,45 +144,10 @@
     "sectionDescription": "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
     "items": [
       {
-        "quote": "Implementing innovative strategies has revolutionized our approach to market challenges and competitive positioning.",
-        "clientImage": "assets/img/person/person-f-7.webp",
-        "clientName": "Rachel Bennett",
-        "clientPosition": "Strategy Director",
-        "highlight": false
-      },
-      {
-        "quote": "Exceptional service delivery and innovative solutions have transformed our business operations, leading to remarkable growth and enhanced customer satisfaction across all touchpoints.",
-        "clientImage": "assets/img/person/person-m-7.webp",
-        "clientName": "Daniel Morgan",
-        "clientPosition": "Chief Innovation Officer",
-        "highlight": true
-      },
-      {
-        "quote": "Strategic partnership has enabled seamless digital transformation and operational excellence.",
-        "clientImage": "assets/img/person/person-f-8.webp",
-        "clientName": "Emma Thompson",
-        "clientPosition": "Digital Lead",
-        "highlight": false
-      },
-      {
-        "quote": "Professional expertise and dedication have significantly improved our project delivery timelines and quality metrics.",
-        "clientImage": "assets/img/person/person-m-8.webp",
-        "clientName": "Christopher Lee",
-        "clientPosition": "Technical Director",
-        "highlight": false
-      },
-      {
-        "quote": "Collaborative approach and industry expertise have revolutionized our product development cycle, resulting in faster time-to-market and increased customer engagement levels.",
-        "clientImage": "assets/img/person/person-f-9.webp",
-        "clientName": "Olivia Carter",
-        "clientPosition": "Product Manager",
-        "highlight": true
-      },
-      {
-        "quote": "Innovative approach to user experience design has significantly enhanced our platform's engagement metrics and customer retention rates.",
-        "clientImage": "assets/img/person/person-m-13.webp",
-        "clientName": "Nathan Brooks",
-        "clientPosition": "UX Director",
+        "quote": "",
+        "clientImage": "dqwdq",
+        "clientName": "dqwdqwd",
+        "clientPosition": "dqdwqwd",
         "highlight": false
       }
     ]

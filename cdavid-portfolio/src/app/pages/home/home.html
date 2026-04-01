@@ -2,12 +2,13 @@
 
 <main class="main">
   <app-hero />
-  <app-about />
-  <app-stats />
-  <app-skills />
-  <app-portfolio />
-  <app-services />
-  <app-contact />
+  @if (visibility().about) { <app-about /> }
+  @if (visibility().stats) { <app-stats /> }
+  @if (visibility().skills) { <app-skills /> }
+  @if (visibility().portfolio) { <app-portfolio /> }
+  @if (visibility().services) { <app-services /> }
+  @if (visibility().testimonials) { <app-testimonials /> }
+  @if (visibility().contact) { <app-contact /> }
 </main>
 
 <app-footer />

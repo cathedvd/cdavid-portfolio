@@ -109,6 +109,34 @@
         font-size: 13px;
         font-weight: 600;
       }
+
+      .item-actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    &.is-item-hidden {
+      opacity: 0.4;
+    }
+
+    .visibility-btn {
+      background: none;
+      border: none;
+      color: #34c759;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      &.is-hidden {
+        color: #ff6b6b;
+      }
     }
 
     .remove-btn {
@@ -197,5 +225,9 @@
   @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+  }
+
+  .form-section.is-item-hidden {
+    opacity: 0.45;
   }
 }

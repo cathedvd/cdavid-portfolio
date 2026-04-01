@@ -20,14 +20,15 @@ export interface AboutContent {
   sectionBadge: string;
   sectionHeading: string;
   descriptionParagraphs: string[];
-  stats: { number: string; label: string }[];
-  details: { label: string; value: string }[];
+  stats: { number: string; label: string; visible?: boolean }[];
+  details: { label: string; value: string; visible?: boolean }[];
 }
 
 export interface StatItem {
   icon: string;
   endValue: number;
   label: string;
+  visible?: boolean;
 }
 
 export interface StatsContent {
@@ -38,11 +39,13 @@ export interface SkillItem {
   name: string;
   percentage: number;
   tooltip: string;
+  visible?: boolean;
 }
 
 export interface SkillCategory {
   title: string;
   skills: SkillItem[];
+  visible?: boolean;
 }
 
 export interface SkillsContent {
@@ -74,6 +77,7 @@ export interface ReferenceItem {
   image: string;
   name: string;
   position: string;
+  visible?: boolean;
 }
 
 export interface ServicesContent {
@@ -88,6 +92,7 @@ export interface TestimonialItem {
   clientName: string;
   clientPosition: string;
   highlight: boolean;
+  visible?: boolean;
 }
 
 export interface TestimonialsContent {
@@ -122,6 +127,16 @@ export interface HeaderContent {
 export interface FooterContent {
 }
 
+export interface SectionVisibility {
+  about: boolean;
+  stats: boolean;
+  skills: boolean;
+  portfolio: boolean;
+  services: boolean;
+  testimonials: boolean;
+  contact: boolean;
+}
+
 export interface PortfolioSiteContent {
   hero: HeroContent;
   about: AboutContent;
@@ -133,4 +148,5 @@ export interface PortfolioSiteContent {
   contact: ContactContent;
   header: HeaderContent;
   footer: FooterContent;
+  sectionVisibility: SectionVisibility;
 }

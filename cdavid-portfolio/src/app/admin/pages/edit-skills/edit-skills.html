@@ -22,10 +22,15 @@
   </div>
 
   @for (cat of data.categories; track $index) {
-    <div class="form-section">
+    <div class="form-section" [class.is-item-hidden]="cat.visible === false">
       <h3>
         Category: {{ cat.title || 'Untitled' }}
-        <button class="remove-btn" style="float:right" (click)="removeCategory($index)">Remove Category</button>
+        <span style="float:right;display:flex;align-items:center;gap:4px">
+          <button class="visibility-btn" [class.is-hidden]="cat.visible === false" (click)="cat.visible = cat.visible !== false ? false : true" [title]="cat.visible !== false ? 'Hide from visitors' : 'Show to visitors'">
+            <i [class]="cat.visible !== false ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+          </button>
+          <button class="remove-btn" (click)="removeCategory($index)">Remove Category</button>
+        </span>
       </h3>
       <div class="form-group">
         <label>Category Title</label>
@@ -33,10 +38,15 @@
       </div>
 
       @for (skill of cat.skills; track $index; let si = $index) {
-        <div class="array-item">
+        <div class="array-item" [class.is-item-hidden]="skill.visible === false">
           <div class="item-header">
             <span class="item-title">{{ skill.name || 'New Skill' }}</span>
-            <button class="remove-btn" (click)="removeSkill($index, si)">Remove</button>
+            <div class="item-actions">
+              <button class="visibility-btn" [class.is-hidden]="skill.visible === false" (click)="skill.visible = skill.visible !== false ? false : true" [title]="skill.visible !== false ? 'Hide from visitors' : 'Show to visitors'">
+                <i [class]="skill.visible !== false ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+              </button>
+              <button class="remove-btn" (click)="removeSkill($index, si)">Remove</button>
+            </div>
           </div>
           <div class="form-row">
             <div class="form-group">

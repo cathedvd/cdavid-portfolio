@@ -5,10 +5,21 @@
     </div>
     <nav class="sidebar-nav">
       @for (item of sidebarItems; track item.route) {
-        <a [routerLink]="item.route" routerLinkActive="active" class="nav-item">
-          <i [class]="item.icon"></i>
-          <span>{{ item.label }}</span>
-        </a>
+        <div class="nav-item-row" [class.section-hidden]="item.visibilityKey && !sectionVisibility()[item.visibilityKey]">
+          <a [routerLink]="item.route" routerLinkActive="active" class="nav-item">
+            <i [class]="item.icon"></i>
+            <span>{{ item.label }}</span>
+          </a>
+          @if (item.visibilityKey) {
+            <button
+              class="visibility-btn"
+              [class.is-hidden]="!sectionVisibility()[item.visibilityKey]"
+              (click)="toggleVisibility(item.visibilityKey, $event)"
+              [title]="sectionVisibility()[item.visibilityKey] ? 'Hide from visitors' : 'Show to visitors'">
+              <i [class]="sectionVisibility()[item.visibilityKey] ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+            </button>
+          }
+        </div>
       }
     </nav>
     <div class="sidebar-footer">

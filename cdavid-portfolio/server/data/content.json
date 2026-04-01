@@ -33,12 +33,12 @@
   "about": {
     "profileImage": "assets/img/profile/5db785d6-eee0-4b6c-b56c-50064197b7ba.jpg",
     "name": "Cathereen David",
-    "profession": "Cybersecurity G",
+    "profession": "Cybersecurity Graduate",
     "email": "cathedvd.cyb@gmail.com",
     "phone": "+63(999) 854-8904",
     "location": "Magalang, Pampanga",
     "sectionBadge": "Get to Know Me",
-    "sectionHeading": "Passionate About Creating Digital Experiences",
+    "sectionHeading": "About Me",
     "descriptionParagraphs": [
       "I am an aspiring cybersecurity and networking professional with hands-on internship experience in ICT operations at MEC Networks, an IT consulting and distribution company. Currently assigned as a TPO Intern, I support technical and project-related operations through documentation, coordination, and product-related research, gaining exposure to real-world ICT workflows.",
       "I have a strong foundation in networking and security, supported by multiple industry certifications including CCNA, Fortinet Cybersecurity certifications, AWS Cloud Security Foundations, and Ethical Hacking training. I actively participate in cybersecurity competitions and Capture the Flag (CTF) events, where I have developed skills in problem-solving, threat analysis, and practical security techniques."
@@ -50,8 +50,8 @@
     "items": []
   },
   "skills": {
-    "sectionTitle": "Skills",
-    "sectionDescription": "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
+    "sectionTitle": "",
+    "sectionDescription": "",
     "categories": []
   },
   "portfolio": {
@@ -221,5 +221,14 @@
       }
     ]
   },
-  "footer": {}
+  "footer": {},
+  "sectionVisibility": {
+    "about": true,
+    "stats": true,
+    "skills": false,
+    "portfolio": true,
+    "services": true,
+    "testimonials": false,
+    "contact": true
+  }
 }

@@ -26,14 +26,25 @@
 
   <div class="sections-grid">
     @for (section of sections; track section.route) {
-      <a [routerLink]="section.route" class="section-card">
-        <div class="card-icon"><i [class]="section.icon"></i></div>
-        <div class="card-content">
-          <h3>{{ section.label }}</h3>
-          <p>{{ section.description }}</p>
-        </div>
-        <i class="bi bi-chevron-right card-arrow"></i>
-      </a>
+      <div class="section-card-wrapper" [class.section-hidden]="section.visibilityKey && !sectionVisibility()[section.visibilityKey]">
+        <a [routerLink]="section.route" class="section-card">
+          <div class="card-icon"><i [class]="section.icon"></i></div>
+          <div class="card-content">
+            <h3>{{ section.label }}</h3>
+            <p>{{ section.description }}</p>
+          </div>
+          <i class="bi bi-chevron-right card-arrow"></i>
+        </a>
+        @if (section.visibilityKey) {
+          <button
+            class="card-visibility-btn"
+            [class.is-hidden]="!sectionVisibility()[section.visibilityKey]"
+            (click)="toggleVisibility(section.visibilityKey, $event)"
+            [title]="sectionVisibility()[section.visibilityKey] ? 'Hide from visitors' : 'Show to visitors'">
+            <i [class]="sectionVisibility()[section.visibilityKey] ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+          </button>
+        }
+      </div>
     }
   </div>
 </div>

@@ -48,7 +48,7 @@
           </div>
 
           <div class="stats-grid">
-            @for (stat of about().stats; track stat.label) {
+            @for (stat of about().stats.filter(s => s.visible !== false); track stat.label) {
               <div class="stat-item">
                 <div class="stat-number">{{ stat.number }}</div>
                 <div class="stat-label">{{ stat.label }}</div>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="details-grid">
-            @for (row of [about().details.slice(0, 2), about().details.slice(2, 4)]; track $index) {
+            @for (row of [about().details.filter(d => d.visible !== false).slice(0, 2), about().details.filter(d => d.visible !== false).slice(2, 4)]; track $index) {
               <div class="detail-row">
                 @for (detail of row; track detail.label) {
                   <div class="detail-item">
@@ -70,14 +70,14 @@
           </div>
 
           <div class="cta-section">
-            <button (click)="downloadResume()" class="btn btn-primary">
+            <button type="button" (click)="downloadResume($event)" class="btn btn-primary">
               <i class="bi bi-download"></i>
               Download Resume
             </button>
-            <a href="#contact" class="btn btn-outline">
+            <button type="button" (click)="scrollToContact($event)" class="btn btn-outline">
               <i class="bi bi-chat-dots"></i>
               Let's Talk
-            </a>
+            </button>
           </div>
         </div>
       </div>

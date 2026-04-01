@@ -6,12 +6,12 @@
 
   <div class="container">
     <div class="row">
-      @for (category of skills().categories; track category.title) {
+      @for (category of skills().categories.filter(c => c.visible !== false); track category.title) {
         <div class="col-lg-6">
           <div class="skills-category">
             <h3>{{ category.title }}</h3>
             <div class="skills-animation">
-              @for (skill of category.skills; track skill.name) {
+              @for (skill of category.skills.filter(s => s.visible !== false); track skill.name) {
                 <div class="skill-item">
                   <div class="d-flex justify-content-between align-items-center">
                     <h4>{{ skill.name }}</h4>

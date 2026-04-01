@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { Header } from '../../components/header/header';
 import { Hero } from '../../components/hero/hero';
 import { About } from '../../components/about/about';
@@ -6,8 +6,10 @@ import { Stats } from '../../components/stats/stats';
 import { Skills } from '../../components/skills/skills';
 import { Portfolio } from '../../components/portfolio/portfolio';
 import { Services } from '../../components/services/services';
+import { Testimonials } from '../../components/testimonials/testimonials';
 import { Contact } from '../../components/contact/contact';
 import { Footer } from '../../components/footer/footer';
+import { ContentService } from '../../services/content.service';
 @Component({
   selector: 'app-home',
   imports: [
@@ -18,6 +20,7 @@ import { Footer } from '../../components/footer/footer';
     Skills,
     Portfolio,
     Services,
+    Testimonials,
     Contact,
     Footer
   ],
@@ -25,6 +28,8 @@ import { Footer } from '../../components/footer/footer';
   styleUrl: './home.scss',
 })
 export class Home implements AfterViewInit, OnDestroy {
+  private contentService = inject(ContentService);
+  visibility = this.contentService.sectionVisibility;
   private scrollHandler = this.onScroll.bind(this);
 
   ngAfterViewInit(): void {

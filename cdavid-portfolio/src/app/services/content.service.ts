@@ -1,6 +1,6 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PortfolioSiteContent } from '../models/content.interfaces';
+import { PortfolioSiteContent, SectionVisibility } from '../models/content.interfaces';
 import { DEFAULT_CONTENT } from './content.defaults';
 import { firstValueFrom } from 'rxjs';
 
@@ -21,6 +21,7 @@ export class ContentService {
   contact = computed(() => this.content().contact);
   header = computed(() => this.content().header);
   footer = computed(() => this.content().footer);
+  sectionVisibility = computed(() => this.content().sectionVisibility);
 
   constructor() {
     void this.refreshFromServer(true);
@@ -35,6 +36,12 @@ export class ContentService {
   async updateSection<K extends keyof PortfolioSiteContent>(section: K, data: PortfolioSiteContent[K]): Promise<boolean> {
     const next = { ...this.content(), [section]: structuredClone(data) };
     return this.persist(next);
+  }
+
+  async toggleSectionVisibility(section: keyof SectionVisibility): Promise<boolean> {
+    const current = this.content().sectionVisibility;
+    const updated = { ...current, [section]: !current[section] };
+    return this.updateSection('sectionVisibility', updated);
   }
 
   async resetSection(section: keyof PortfolioSiteContent): Promise<boolean> {

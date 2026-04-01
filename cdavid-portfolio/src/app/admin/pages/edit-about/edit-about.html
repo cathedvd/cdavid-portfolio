@@ -70,10 +70,15 @@
   <div class="form-section">
     <h3>Stats</h3>
     @for (stat of data.stats; track $index) {
-      <div class="array-item">
+      <div class="array-item" [class.is-item-hidden]="stat.visible === false">
         <div class="item-header">
           <span class="item-title">Stat {{ $index + 1 }}</span>
-          <button class="remove-btn" (click)="removeStat($index)">Remove</button>
+          <div class="item-actions">
+            <button class="visibility-btn" [class.is-hidden]="stat.visible === false" (click)="stat.visible = stat.visible !== false ? false : true" [title]="stat.visible !== false ? 'Hide from visitors' : 'Show to visitors'">
+              <i [class]="stat.visible !== false ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+            </button>
+            <button class="remove-btn" (click)="removeStat($index)">Remove</button>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -93,10 +98,15 @@
   <div class="form-section">
     <h3>Details</h3>
     @for (detail of data.details; track $index) {
-      <div class="array-item">
+      <div class="array-item" [class.is-item-hidden]="detail.visible === false">
         <div class="item-header">
           <span class="item-title">Detail {{ $index + 1 }}</span>
-          <button class="remove-btn" (click)="removeDetail($index)">Remove</button>
+          <div class="item-actions">
+            <button class="visibility-btn" [class.is-hidden]="detail.visible === false" (click)="detail.visible = detail.visible !== false ? false : true" [title]="detail.visible !== false ? 'Hide from visitors' : 'Show to visitors'">
+              <i [class]="detail.visible !== false ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+            </button>
+            <button class="remove-btn" (click)="removeDetail($index)">Remove</button>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group">

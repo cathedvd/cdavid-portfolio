@@ -148,5 +148,15 @@ export const DEFAULT_CONTENT: PortfolioSiteContent = {
     ]
   },
 
-  footer: {}
+  footer: {},
+
+  sectionVisibility: {
+    about: true,
+    stats: true,
+    skills: true,
+    portfolio: true,
+    services: true,
+    testimonials: true,
+    contact: true
+  }
 };

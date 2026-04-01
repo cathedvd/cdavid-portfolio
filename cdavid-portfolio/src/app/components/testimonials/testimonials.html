@@ -6,7 +6,7 @@
 
   <div class="container">
     <div class="testimonial-masonry">
-      @for (item of testimonials().items; track item.clientName) {
+      @for (item of testimonials().items.filter(i => i.visible !== false); track item.clientName) {
         <div class="testimonial-item" [class.highlight]="item.highlight">
           <div class="testimonial-content">
             <div class="quote-pattern"><i class="bi bi-quote"></i></div>

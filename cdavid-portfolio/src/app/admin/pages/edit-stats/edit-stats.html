@@ -10,10 +10,15 @@
   <div class="form-section">
     <h3>Stat Items</h3>
     @for (item of data.items; track $index) {
-      <div class="array-item">
+      <div class="array-item" [class.is-item-hidden]="item.visible === false">
         <div class="item-header">
           <span class="item-title">Stat {{ $index + 1 }}</span>
-          <button class="remove-btn" (click)="removeItem($index)">Remove</button>
+          <div class="item-actions">
+            <button class="visibility-btn" [class.is-hidden]="item.visible === false" (click)="item.visible = item.visible !== false ? false : true" [title]="item.visible !== false ? 'Hide from visitors' : 'Show to visitors'">
+              <i [class]="item.visible !== false ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+            </button>
+            <button class="remove-btn" (click)="removeItem($index)">Remove</button>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group">

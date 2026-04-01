@@ -34,6 +34,47 @@
     overflow-y: auto;
   }
 
+  .nav-item-row {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+
+    &.section-hidden .nav-item {
+      opacity: 0.4;
+    }
+
+    &:hover .visibility-btn {
+      opacity: 1;
+    }
+  }
+
+  .visibility-btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    color: #34c759;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    opacity: 0;
+    transition: all 0.2s;
+    margin-right: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &.is-hidden {
+      opacity: 1;
+      color: #ff6b6b;
+    }
+  }
+
   .nav-item {
     display: flex;
     align-items: center;
@@ -46,7 +87,7 @@
     transition: all 0.2s;
     border: none;
     background: none;
-    width: 100%;
+    flex: 1;
     cursor: pointer;
     text-align: left;
 

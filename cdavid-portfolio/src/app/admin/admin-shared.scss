@@ -170,6 +170,19 @@
     &:hover {
       background: rgba(100, 108, 255, 0.2);
     }
+
+    &.compact {
+      padding: 4px 8px;
+      border-style: solid;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  }
+
+  .empty-note {
+    color: #888;
+    font-size: 13px;
+    margin: 0;
   }
 
   .btn-save {

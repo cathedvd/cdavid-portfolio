@@ -2,6 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ContentService } from '../../../services/content.service';
 import { HeroContent } from '../../../models/content.interfaces';
+import { DEFAULT_CONTENT } from '../../../services/content.defaults';
 
 @Component({
   selector: 'app-edit-hero',
@@ -37,6 +38,29 @@ export class EditHero {
 
   removeSocialLink(i: number): void {
     this.data.socialLinks.splice(i, 1);
+  }
+
+  hasButton(type: 'primary' | 'secondary'): boolean {
+    const button = type === 'primary' ? this.data.ctaPrimary : this.data.ctaSecondary;
+    return Boolean(button.text.trim() || button.link.trim());
+  }
+
+  removeButton(type: 'primary' | 'secondary'): void {
+    if (type === 'primary') {
+      this.data.ctaPrimary = { text: '', link: '' };
+      return;
+    }
+
+    this.data.ctaSecondary = { text: '', link: '' };
+  }
+
+  restoreButton(type: 'primary' | 'secondary'): void {
+    if (type === 'primary') {
+      this.data.ctaPrimary = structuredClone(DEFAULT_CONTENT.hero.ctaPrimary);
+      return;
+    }
+
+    this.data.ctaSecondary = structuredClone(DEFAULT_CONTENT.hero.ctaSecondary);
   }
 
   async save(): Promise<void> {

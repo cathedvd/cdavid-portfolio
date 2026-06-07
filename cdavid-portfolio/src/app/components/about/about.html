@@ -47,36 +47,38 @@
             }
           </div>
 
-          <div class="stats-grid">
-            @for (stat of about().stats.filter(s => s.visible !== false); track stat.label) {
-              <div class="stat-item">
-                <div class="stat-number">{{ stat.number }}</div>
-                <div class="stat-label">{{ stat.label }}</div>
-              </div>
-            }
-          </div>
+          @if (visibleStats().length) {
+            <div class="stats-grid">
+              @for (stat of visibleStats(); track stat.label) {
+                <div class="stat-item">
+                  <div class="stat-number">{{ stat.number }}</div>
+                  <div class="stat-label">{{ stat.label }}</div>
+                </div>
+              }
+            </div>
+          }
 
-          <div class="details-grid">
-            @for (row of [about().details.filter(d => d.visible !== false).slice(0, 2), about().details.filter(d => d.visible !== false).slice(2, 4)]; track $index) {
-              <div class="detail-row">
-                @for (detail of row; track detail.label) {
-                  <div class="detail-item">
-                    <span class="detail-label">{{ detail.label }}</span>
-                    <span class="detail-value">{{ detail.value }}</span>
+          @if (visibleDetails().length) {
+            <div class="details-grid">
+              @for (row of [visibleDetails().slice(0, 2), visibleDetails().slice(2, 4)]; track $index) {
+                @if (row.length) {
+                  <div class="detail-row">
+                    @for (detail of row; track detail.label) {
+                      <div class="detail-item">
+                        <span class="detail-label">{{ detail.label }}</span>
+                        <span class="detail-value">{{ detail.value }}</span>
+                      </div>
+                    }
                   </div>
                 }
-              </div>
-            }
-          </div>
+              }
+            </div>
+          }
 
           <div class="cta-section">
             <button type="button" (click)="downloadResume($event)" class="btn btn-primary">
               <i class="bi bi-download"></i>
               Download Resume
-            </button>
-            <button type="button" (click)="scrollToContact($event)" class="btn btn-outline">
-              <i class="bi bi-chat-dots"></i>
-              Let's Talk
             </button>
           </div>
         </div>

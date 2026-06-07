@@ -1,32 +1,34 @@
-<section id="skills" class="skills section">
-  <div class="container section-title">
-    <h2>{{ skills().sectionTitle }}</h2>
-    <p>{{ skills().sectionDescription }}</p>
-  </div>
+@if (visibleCategories().length) {
+  <section id="skills" class="skills section">
+    <div class="container section-title">
+      <h2>{{ skills().sectionTitle }}</h2>
+      <p>{{ skills().sectionDescription }}</p>
+    </div>
 
-  <div class="container">
-    <div class="row">
-      @for (category of skills().categories.filter(c => c.visible !== false); track category.title) {
-        <div class="col-lg-6">
-          <div class="skills-category">
-            <h3>{{ category.title }}</h3>
-            <div class="skills-animation">
-              @for (skill of category.skills.filter(s => s.visible !== false); track skill.name) {
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h4>{{ skill.name }}</h4>
-                    <span class="skill-percentage">{{ skill.percentage }}%</span>
+    <div class="container">
+      <div class="row">
+        @for (category of visibleCategories(); track category.title) {
+          <div class="col-lg-6">
+            <div class="skills-category">
+              <h3>{{ category.title }}</h3>
+              <div class="skills-animation">
+                @for (skill of category.skills.filter(s => s.visible !== false); track skill.name) {
+                  <div class="skill-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h4>{{ skill.name }}</h4>
+                      <span class="skill-percentage">{{ skill.percentage }}%</span>
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="skill.percentage" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="skill-tooltip">{{ skill.tooltip }}</div>
                   </div>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="skill.percentage" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <div class="skill-tooltip">{{ skill.tooltip }}</div>
-                </div>
-              }
+                }
+              </div>
             </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}

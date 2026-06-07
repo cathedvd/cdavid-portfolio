@@ -336,5 +336,65 @@
     "description": "",
     "category": "Experience",
     "imagePath": "/uploads/portfolio/1774014462805-740577.jpg"
+  },
+  {
+    "id": "1780847318837",
+    "title": "Summa Cum Laude | Bachelor Of Science in Cybersecurity",
+    "description": "",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1780847323384-878953.jpg",
+    "detailedDescription": "",
+    "client": "",
+    "projectDate": "",
+    "projectUrl": "",
+    "additionalImages": []
+  },
+  {
+    "id": "1780847355467",
+    "title": "Trend Micro 20 Student Competitor",
+    "description": "",
+    "category": "Competitons",
+    "imagePath": "/uploads/portfolio/1780847358773-749699.jpg",
+    "detailedDescription": "",
+    "client": "",
+    "projectDate": "",
+    "projectUrl": "",
+    "additionalImages": []
+  },
+  {
+    "id": "1780847405811",
+    "title": "Best Thesis ",
+    "description": "",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1780847435035-588957.jpg",
+    "detailedDescription": "",
+    "client": "",
+    "projectDate": "",
+    "projectUrl": "",
+    "additionalImages": []
+  },
+  {
+    "id": "1780847447080",
+    "title": "Best Colloquium Presenter",
+    "description": "",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1780847451211-888433.jpg",
+    "detailedDescription": "",
+    "client": "",
+    "projectDate": "",
+    "projectUrl": "",
+    "additionalImages": []
+  },
+  {
+    "id": "1780847463485",
+    "title": "Most Outstanding Student",
+    "description": "",
+    "category": "Education",
+    "imagePath": "/uploads/portfolio/1780847467812-906663.jpg",
+    "detailedDescription": "",
+    "client": "",
+    "projectDate": "",
+    "projectUrl": "",
+    "additionalImages": []
   }
 ]

@@ -1,26 +1,28 @@
-<section id="testimonials" class="testimonials section light-background">
-  <div class="container section-title">
-    <h2>{{ testimonials().sectionTitle }}</h2>
-    <p>{{ testimonials().sectionDescription }}</p>
-  </div>
+@if (visibleItems().length) {
+  <section id="testimonials" class="testimonials section light-background">
+    <div class="container section-title">
+      <h2>{{ testimonials().sectionTitle }}</h2>
+      <p>{{ testimonials().sectionDescription }}</p>
+    </div>
 
-  <div class="container">
-    <div class="testimonial-masonry">
-      @for (item of testimonials().items.filter(i => i.visible !== false); track item.clientName) {
-        <div class="testimonial-item" [class.highlight]="item.highlight">
-          <div class="testimonial-content">
-            <div class="quote-pattern"><i class="bi bi-quote"></i></div>
-            <p>{{ item.quote }}</p>
-            <div class="client-info">
-              <div class="client-image"><img [src]="item.clientImage" alt="Client"></div>
-              <div class="client-details">
-                <h3>{{ item.clientName }}</h3>
-                <span class="position">{{ item.clientPosition }}</span>
+    <div class="container">
+      <div class="testimonial-masonry">
+        @for (item of visibleItems(); track item.clientName) {
+          <div class="testimonial-item" [class.highlight]="item.highlight">
+            <div class="testimonial-content">
+              <div class="quote-pattern"><i class="bi bi-quote"></i></div>
+              <p>{{ item.quote }}</p>
+              <div class="client-info">
+                <div class="client-image"><img [src]="item.clientImage" alt="Client"></div>
+                <div class="client-details">
+                  <h3>{{ item.clientName }}</h3>
+                  <span class="position">{{ item.clientPosition }}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}

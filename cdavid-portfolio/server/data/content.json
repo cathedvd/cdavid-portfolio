@@ -4,20 +4,20 @@
     "brandAccent": "",
     "fullName": "Cathereen ",
     "typedItems": [
-      "Cybersecurity Student",
+      "Cybersecurity Graduate",
       "CTF Competitor",
       "Aspiring Security Analyst",
       "Machine Learning Enthusiast"
     ],
-    "description": "A cybersecurity graduate with a strong foundation in network security, hands-on experience in enterprise systems, and a passion for solving real-world security challenges. Proven through competitions and projects, you combine technical skill, curiosity, and initiative to build practical and effective solutions.",
-    "profileImage": "assets/img/profile/5db785d6-eee0-4b6c-b56c-50064197b7ba.jpg",
+    "description": "Cybersecurity Graduate blending hands-on enterprise networking experience with advanced threat detection research. Passionate about leveraging data and analytical defense strategies to mitigate modern security risks.",
+    "profileImage": "assets/img/profile/gradPhoto.jpg",
     "ctaPrimary": {
       "text": "View My Work",
       "link": "#portfolio"
     },
     "ctaSecondary": {
-      "text": "Get In Touch",
-      "link": "#contact"
+      "text": "",
+      "link": ""
     },
     "socialLinks": [
       {
@@ -31,7 +31,7 @@
     ]
   },
   "about": {
-    "profileImage": "assets/img/profile/5db785d6-eee0-4b6c-b56c-50064197b7ba.jpg",
+    "profileImage": "assets/img/profile/gradPhoto.jpg",
     "name": "Cathereen David",
     "profession": "Cybersecurity Graduate",
     "email": "cathedvd.cyb@gmail.com",
@@ -40,8 +40,7 @@
     "sectionBadge": "Get to Know Me",
     "sectionHeading": "About Me",
     "descriptionParagraphs": [
-      "I am an aspiring cybersecurity and networking professional with hands-on internship experience in ICT operations at MEC Networks, an IT consulting and distribution company. Currently assigned as a TPO Intern, I support technical and project-related operations through documentation, coordination, and product-related research, gaining exposure to real-world ICT workflows.",
-      "I have a strong foundation in networking and security, supported by multiple industry certifications including CCNA, Fortinet Cybersecurity certifications, AWS Cloud Security Foundations, and Ethical Hacking training. I actively participate in cybersecurity competitions and Capture the Flag (CTF) events, where I have developed skills in problem-solving, threat analysis, and practical security techniques."
+      "Hi, I’m Cathereen David, a Cybersecurity graduate focused on network security and threat detection. I specialize in bridging the gap between security theory and practical defense, a skillset I developed through hands-on enterprise experience as an intern at MEC Networks Corporation. There, I worked directly with industry-standard technologies like Fortinet and Aruba to configure and deploy secure network solutions. I am also deeply interested in proactive defense; for my thesis, I developed a real-time phishing detection tool using machine learning, and I regularly sharpen my incident-response skills in competitive environments—even earning Champion at a Trend Micro Capture-the-Flag competition.\n\nWhat drives me as a security professional is the challenge of analyzing environments, uncovering vulnerabilities, and stopping threats before they impact an organization. Backed by a strong suite of certifications including CCNA, AWS Cloud Security, and Fortinet. I am built to thrive in fast-paced security operations. I am currently looking to leverage my analytical mindset and technical foundation in a Security Analyst role, and I'm always open to connecting with fellow professionals or exploring new opportunities to help keep digital ecosystems secure."
     ],
     "stats": [],
     "details": []
@@ -123,17 +122,17 @@
     "sectionDescription": "People who can speak about my work, character, and professional growth.",
     "items": [
       {
-        "image": "assets/img/person/",
+        "image": "assets/img/person/person_icon.jpg",
         "name": "Ezekiel Aaron Luna",
         "position": "OJT Supervisor"
       },
       {
-        "image": "assets/img/person/",
+        "image": "assets/img/person/person_icon.jpg",
         "name": "Dr. Marlon Tayag",
         "position": "College Dean"
       },
       {
-        "image": "assets/img/person/",
+        "image": "assets/img/person/person_icon.jpg",
         "name": "Dr Joseph Esquivel",
         "position": "Cisco Program Coordinator"
       }
@@ -191,33 +190,6 @@
         "label": "References",
         "href": "#services",
         "icon": "bi bi-hdd-stack navicon"
-      },
-      {
-        "label": "Contact",
-        "href": "#contact",
-        "icon": "bi bi-envelope navicon"
-      }
-    ],
-    "socialLinks": [
-      {
-        "icon": "bi bi-twitter-x",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-facebook",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-instagram",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-skype",
-        "url": "#"
-      },
-      {
-        "icon": "bi bi-linkedin",
-        "url": "#"
       }
     ]
   },
@@ -229,6 +201,6 @@
     "portfolio": true,
     "services": true,
     "testimonials": false,
-    "contact": true
+    "contact": false
   }
 }

@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, inject } from '@angular/core';
 import { ContentService } from '../../services/content.service';
+import { SkillCategory } from '../../models/content.interfaces';
 
 declare class Waypoint {
   constructor(options: Record<string, unknown>);
@@ -14,6 +15,12 @@ declare class Waypoint {
 export class Skills implements AfterViewInit {
   private contentService = inject(ContentService);
   skills = this.contentService.skills;
+
+  visibleCategories(): SkillCategory[] {
+    return this.skills().categories
+      .filter(category => category.visible !== false)
+      .filter(category => category.skills.some(skill => skill.visible !== false));
+  }
 
   ngAfterViewInit(): void {
     const skillsAnimations = document.querySelectorAll('.skills-animation');

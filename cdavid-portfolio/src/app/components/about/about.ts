@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ContentService } from '../../services/content.service';
+import { AboutContent } from '../../models/content.interfaces';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +11,14 @@ import { ContentService } from '../../services/content.service';
 export class About {
   private contentService = inject(ContentService);
   about = this.contentService.about;
+
+  visibleStats(data: AboutContent = this.about()): AboutContent['stats'] {
+    return data.stats.filter(stat => stat.visible !== false);
+  }
+
+  visibleDetails(data: AboutContent = this.about()): AboutContent['details'] {
+    return data.details.filter(detail => detail.visible !== false);
+  }
 
   downloadResume(event: Event): void {
     event.preventDefault();
@@ -22,11 +31,4 @@ export class About {
     document.body.removeChild(link);
   }
 
-  scrollToContact(event: Event): void {
-    event.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
 }

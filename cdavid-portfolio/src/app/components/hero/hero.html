@@ -15,8 +15,12 @@
             <p class="description">{{ hero().description }}</p>
 
             <div class="hero-actions">
-              <a [href]="hero().ctaPrimary.link" class="btn btn-primary">{{ hero().ctaPrimary.text }}</a>
-              <a [href]="hero().ctaSecondary.link" class="btn btn-outline">{{ hero().ctaSecondary.text }}</a>
+              @if (hero().ctaPrimary.text.trim() && hero().ctaPrimary.link.trim()) {
+                <a [href]="hero().ctaPrimary.link" class="btn btn-primary">{{ hero().ctaPrimary.text }}</a>
+              }
+              @if (hero().ctaSecondary.text.trim() && hero().ctaSecondary.link.trim()) {
+                <a [href]="hero().ctaSecondary.link" class="btn btn-outline">{{ hero().ctaSecondary.text }}</a>
+              }
             </div>
 
             <div class="social-links">

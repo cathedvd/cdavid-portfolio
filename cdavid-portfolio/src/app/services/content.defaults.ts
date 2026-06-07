@@ -2,12 +2,12 @@ import { PortfolioSiteContent } from '../models/content.interfaces';
 
 export const DEFAULT_CONTENT: PortfolioSiteContent = {
   hero: {
-    brandName: 'Portfolio',
+    brandName: 'David',
     brandAccent: '',
     fullName: 'Cathereen David',
-    typedItems: ['Cybersecurity Student', 'CTF Competitor', 'Aspiring Security Analyst', 'Machine Learning Enthusiast'],
-    description: 'Passionate about creating exceptional digital experiences that blend innovative design with functional development. Let\'s bring your vision to life.',
-    profileImage: 'assets/img/profile/profile-2.webp',
+    typedItems: ['Cybersecurity Graduate', 'CTF Competitor', 'Aspiring Security Analyst', 'Machine Learning Enthusiast'],
+    description: 'Cybersecurity Graduate blending hands-on enterprise networking experience with advanced threat detection research. Passionate about leveraging data and analytical defense strategies to mitigate modern security risks.',
+    profileImage: 'assets/img/profile/gradPhoto.jpg',
     ctaPrimary: { text: 'View My Work', link: '#portfolio' },
     ctaSecondary: { text: 'Get In Touch', link: '#contact' },
     socialLinks: [
@@ -19,14 +19,14 @@ export const DEFAULT_CONTENT: PortfolioSiteContent = {
   },
 
   about: {
-    profileImage: 'assets/img/profile/profile-square-3.webp',
-    name: 'Marcus Thompson',
-    profession: 'Creative Director & Developer',
-    email: 'marcus@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
+    profileImage: 'assets/img/profile/gradPhoto.jpg',
+    name: 'Cathereen David',
+    profession: 'Cybersecurity Graduate',
+    email: 'cathedvd.cyb@gmail.com',
+    phone: '+63(999) 854-8904',
+    location: 'Magalang, Pampanga',
     sectionBadge: 'Get to Know Me',
-    sectionHeading: 'Passionate About Creating Digital Experiences',
+    sectionHeading: 'About Me',
     descriptionParagraphs: [
       'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
       'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.'
